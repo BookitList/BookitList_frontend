@@ -1,0 +1,14 @@
+.FooterContainer {
+  border: 1px solid black;
+  height: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.LogoImage,
+Information {
+  magin: 10px;
+}

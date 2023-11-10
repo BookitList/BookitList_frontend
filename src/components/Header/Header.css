@@ -1,0 +1,9 @@
+.HeaderContainer {
+  border: 1px solid black;
+  height: 80px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

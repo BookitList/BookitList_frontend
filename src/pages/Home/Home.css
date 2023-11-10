@@ -1,0 +1,36 @@
+.Home {
+  color: black;
+}
+.SwipeContainer {
+  border: 1px solid black;
+  height: 550px;
+}
+
+.BestContainer,
+.RecentContainer {
+  border: 1px solid black;
+  height: 684px;
+
+  flex: display;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.BestPost,
+.RecentPost {
+  border: 1px solid blue;
+  height: 396px;
+}
+
+.BestReview,
+.RecentReview,
+.WeekUser {
+  border: 1px solid yellow;
+  height: 173px;
+}
+
+.RecommendUser {
+  border: 1px solid black;
+  height: 351px;
+}
