@@ -13,6 +13,20 @@
     border: 1px solid black;
     
 }
-.oneLineReview{
-    height: 283px;
+.reviewContainer h3{
+    margin: 55px 0 0 0;
+}
+.oneLineReviewContainer{
+    height: 166px;
+    margin-top: 40.36px;
+    margin: 0;
+}
+
+.oneLineReviewContainer h4{
+    margin-top: 40.36px;
+    margin-bottom: 17.03px;
+}
+
+.postContainer h4{
+    margin-top: 54.18px;
 }

@@ -14,13 +14,13 @@ const BookDetail= () => {
         </div>
         <div className="reviewContainer">
             <h3>리뷰</h3>
-            <div className="oneLineReview">
-                한 줄 서평
-                <Carousel />
+            <div className="oneLineReviewContainer">
+                <h4>한 줄 서평</h4>
+                <Carousel customClass="oneLineReview" />
             </div>
-            <div className="post">
-                포스트
-                <Carousel />
+            <div className="postContainer">
+                <h4>포스트</h4>
+                <Carousel customClass="post"/>
             </div>
 
         </div>
