@@ -1,20 +1,51 @@
 import React from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import './Home.css';
 
+//img
+// import nextarrow from 'img/next.svg'
+// import prevarrow from 'img/prev.svg'
+
+//swiper styles
+// import 'swiper/swiper-bundle.min.css';
+
+
 const Home = () => {
+
   return (
     <div className='Home'>
       <Header />
-      {/* React Swiper */}
-      <div className='SwipeContainer'>
-        {/* 왼쪽버튼 */}
-        <h3>SwipeContainer</h3>
-        <div className='SwipeContent'>
-          {/* ahref or Link로 각 페이지로 이동하게 하기 */}
-        </div>
-        {/* 오른쪽버튼 */}
+      {/* Slider main container */}
+      <div className='BannerContainer'>
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={10}
+          autoplay={{delay: 200}}
+          keyboard={{
+            enabled: true,
+          }}
+          pagination={{
+            el:'.pagination',
+            clickable: true,
+          }}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }} //네비게이션
+
+          className="BannerSwiper"
+        >
+          <SwiperSlide><img className='Bannerimg01' src='https://post-phinf.pstatic.net/MjAyMTA2MTFfMTQ0/MDAxNjIzNDAxMjkwODQ2.MDnJnH4cNYwu9wm0sWxrAc9gijRN2Til1_DlnWop_mMg.ghxb61VgGqQ0n2ICM-CZyBGN6d7Szy9I_cdaQzuspjUg.JPEG/I260Hx2lhr9y-RDBNHN6df5slKQA.jpg?type=w400'/></SwiperSlide>
+          <SwiperSlide><img className='Bannerimg02' src='https://i.namu.wiki/i/jk1EMhlkAq0LdoiqpNeDZqyYc_66KxYvdL7stKBXRDyYcZ04uAHxvdWXWPDrQ5nT7x9RSjW1mm7fDJYket2R5g.webp'/></SwiperSlide>
+          <SwiperSlide><img className='Bannerimg03' src='https://blog.kakaocdn.net/dn/bOVWDO/btrjO35796M/kW2exTawVOSJit2u53lAu1/img.jpg'/></SwiperSlide>
+          <SwiperSlide><img className='Bannerimg04' src='https://post-phinf.pstatic.net/MjAyMTA2MTFfMTQ0/MDAxNjIzNDAxMjkwODQ2.MDnJnH4cNYwu9wm0sWxrAc9gijRN2Til1_DlnWop_mMg.ghxb61VgGqQ0n2ICM-CZyBGN6d7Szy9I_cdaQzuspjUg.JPEG/I260Hx2lhr9y-RDBNHN6df5slKQA.jpg?type=w400'/></SwiperSlide>
+          <SwiperSlide><img className='Bannerimg05' src='https://i.namu.wiki/i/jk1EMhlkAq0LdoiqpNeDZqyYc_66KxYvdL7stKBXRDyYcZ04uAHxvdWXWPDrQ5nT7x9RSjW1mm7fDJYket2R5g.webp'/></SwiperSlide>
+          <SwiperSlide><img className='Bannerimg06' src='https://blog.kakaocdn.net/dn/bOVWDO/btrjO35796M/kW2exTawVOSJit2u53lAu1/img.jpg'/></SwiperSlide>
+        </Swiper>
       </div>
 
       <div className='BestContainer'>
@@ -23,7 +54,6 @@ const Home = () => {
         <div className='BestPost'>
           인기 포스트
           <div className='BestPostCard'>
-            BestPostCard
           </div>
         </div>
 

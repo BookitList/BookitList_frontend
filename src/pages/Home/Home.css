@@ -1,9 +1,43 @@
 .Home {
   color: black;
 }
-.SwipeContainer {
-  border: 1px solid black;
-  height: 550px;
+.BannerContainer {
+  width: 100%;
+  height: 496px;
+  display: flex;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 33%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next {
+  background: url("img/next.svg") no-repeat;
+}
+.swiper-button-prev {
+  background: url("img/prev.svg") no-repeat;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
 }
 
 .BestContainer,
