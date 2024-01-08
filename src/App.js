@@ -10,7 +10,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" exact element={<Home />} />
+        {/*<Route path="/" exact element={<Home />} />*/}
+        <Route path="/" exact element={<BookDetail />} />
         <Route path="/Login"  element={<Login />} />
         {/* BookDetail 책 데이터마다 링크 다르게 변수처리 */}
         <Route path="/BookDetail"  element={<BookDetail />} /> 
