@@ -35,6 +35,8 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin-top: 33px;
+    margin-bottom: 100px;
   }
 
   .TemporaryStorage, .Registration{
@@ -48,4 +50,18 @@
     background-color: transparent;
     border: transparent;
 
+  }
+
+  .PostTitle{
+    width: 100%;
+    height: 70px;
+    margin-top: 64px;
+    resize: none;
+  }
+
+  .PostContent{
+    width: 100%;
+    height: 540px;
+    margin-top: 53px;
+    resize: none;
   }
