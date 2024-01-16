@@ -1,29 +1,46 @@
 import React, { useState } from 'react';
 import './Dropdown.css';
+import arrow from '../../img/dropdownArrow.svg';
+import clickedArrow from '../../img/dropdownClickArrow.svg';
 
 const Dropdown = ({ toggleOneLineWriting, togglePostWriting }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [buttonText, setButtonText] = useState('한줄요약'); // 초기 텍스트 설정
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const [buttonText, setButtonText] = useState('한줄요약');
+  const [arrowImage, setArrowImage] = useState(arrow);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+    setIsButtonClicked(true);
+    setArrowImage(clickedArrow); // 클릭 시 이미지 교체
   };
 
   const handleItemClick = (callback, text) => () => {
     setIsOpen(false);
-    setButtonText(text); // 클릭한 항목의 텍스트로 버튼 텍스트 변경
+    setButtonText(text);
+    setIsButtonClicked(false);
+    setArrowImage(arrow); // 클릭 후 이미지를 다시 기본 이미지로 교체
     callback();
   };
 
   return (
     <div className='Dropdown'>
-      <div className='Dropdown-button' onClick={toggleDropdown}>
+      <div
+        // className={`Dropdown-button ${isButtonClicked ? 'clicked' : ''}`}
+        className="Dropdown-button"
+        onClick={toggleDropdown}
+      >
         {buttonText}
+        <img
+          src={arrowImage}
+          alt="dropdown arrow"
+          className={`ArrowIcon ${isButtonClicked ? 'rotated' : ''}`}
+        />
       </div>
       {isOpen && (
         <div className='Dropdown-content'>
-          <div onClick={handleItemClick(toggleOneLineWriting, '한줄요약')}>한줄요약</div>
           <div onClick={handleItemClick(togglePostWriting, '포스트')}>포스트</div>
+          <div onClick={handleItemClick(toggleOneLineWriting, '한줄요약')}>한줄요약</div>
         </div>
       )}
     </div>

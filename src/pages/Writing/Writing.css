@@ -18,10 +18,12 @@
 }
 
 .Dropdown{
-    background-color: gray;
-    width: 259px;
-    height: 35px;
+    width: 154px;
+    height: 52px;
     margin-top: 81px;
+    border-radius: 18px;
+    border: 1px solid #2F1DFF;
+    background: #FFF;
 }
 
 .OneLineTextArea {
@@ -39,9 +41,9 @@
     margin-bottom: 100px;
   }
 
-  .TemporaryStorage, .Registration{
+  .Registration{
     font-size: 24px;
-    color: #B1B1B1;
+    color: #666666;
     font-family: Pretendard;
     font-style: normal;
     font-weight: 400;

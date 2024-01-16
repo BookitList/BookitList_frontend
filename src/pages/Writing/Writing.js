@@ -67,7 +67,6 @@ const Writing = () => {
         
         )}
         <div className='ButtonContainer'>
-          <button className='TemporaryStorage'>임시저장</button>
           <button className='Registration'>등록하기</button>
         </div>
       </div>
