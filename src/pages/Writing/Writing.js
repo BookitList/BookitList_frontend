@@ -5,6 +5,7 @@ import Footer from 'components/Footer/Footer';
 import Dropdown from 'components/Dropdown/Dropdown';
 import deleteButton from '../../img/deleteButton.svg';
 import template from '../../img/template.svg';
+import clear from '../../img/clearButton.svg';
 
 const Writing = () => {
   const [textValue, setTextValue] = useState("");
@@ -54,8 +55,14 @@ const Writing = () => {
       <Header />
       <div className='WritingContainer'>
         <div className='SelectedBookContainer'>
-          <div className='book'></div>
-          <h1 className='BookTitle'>채식주의자</h1>
+          <div className='BookImg'></div>
+          <div>
+            <h1 className='BookTitle'>채식주의자</h1>
+            <p>저자</p>
+            <p>출판사</p>
+            <p>출판일</p>
+            <p className='BookIntroduction'>책 소개</p>
+          </div>
           <img className='DeleteButton' src={deleteButton} alt='DeleteButton'/>
         </div>
         <Dropdown
@@ -79,12 +86,17 @@ const Writing = () => {
                 <h1 className='TemplateButtonText'>템플릿 불러오기</h1>
               </button>
             </div>
-            <textarea
-              className='PostTitle'
-              value={postTitle}
-              onChange={(e) => handleSetTitle(e, setPostTitle)}
-              placeholder="제목을 입력하세요"
-            ></textarea>
+            <div className='PostTitleContainer'>
+              <textarea
+                className='PostTitle'
+                value={postTitle}
+                onChange={(e) => handleSetTitle(e, setPostTitle)}
+                placeholder="제목을 입력하세요"
+              />
+              {postTitle && (
+                  <img className='ClearButton' src={clear} alt='clearButton' onClick={handleClearTitle}/>
+              )}
+            </div>
             <textarea
               className='PostContent'
               value={postContent}
@@ -102,12 +114,17 @@ const Writing = () => {
                 <h1 className='TemplateButtonText'>템플릿 제거하기</h1>
               </button>
             </div>
-            <textarea
-              className='PostTitle'
-              value={postTitle}
-              onChange={(e) => handleSetTitle(e, setPostTitle)}
-              placeholder="제목을 입력하세요"
-            ></textarea>
+            <div className='PostTitleContainer'>
+              <textarea
+                className='PostTitle'
+                value={postTitle}
+                onChange={(e) => handleSetTitle(e, setPostTitle)}
+                placeholder="제목을 입력하세요"
+              />
+              {postTitle && (
+                  <img className='ClearButton' src={clear} alt='clearButton' onClick={handleClearTitle}/>
+              )}
+            </div>
             <h1>1. 책을 읽게 된 계기가 어떻게 되시나요?</h1>
             <textarea
               className='TemplatePost'
