@@ -60,15 +60,18 @@ const Writing = () => {
             value={textValue}
             onChange={(e) => handleSetValue(e)}
             placeholder="내용을 입력하세요"
+            
           ></textarea>
         )}
         {isPostWritingVisible && !isTemplateVisible &&(
           <div className='PostWriting'>
-           <button onClick={handleToggleTemplate}>
-              어떤 내용을 써야할 지 모르겠다면? 
-              <img src={template} alt='templateIcon'/>
-              템플릿 불러오기
+            <div className='Template' >
+            <h1 className='TemplateText'>어떤 내용을 써야할 지 모르겠다면?</h1>
+              <button className='TemplateButton' onClick={handleToggleTemplate}>
+            <img src={template} alt='templateIcon'/>
+            <h1 className='TemplateButtonText'>템플릿 불러오기</h1>
             </button>
+            </div>
           <textarea
             className='PostTitle'
             value={postTitle}
@@ -86,11 +89,13 @@ const Writing = () => {
         )}
         {isPostWritingVisible && isTemplateVisible && (
         <div className="TemplatePostWriting">
-          <button onClick={handleToggleTemplate}>
-              책을 자유롭게 기록하고 싶다면?
-              <img src={template} alt='templateIcon'/>
-              템플릿 제거하기
+          <div className='Template' >
+            <h1 className='TemplateText'>책을 자유롭게 기록하고 싶다면?</h1>
+          <button className='TemplateButton' onClick={handleToggleTemplate}>
+              <img className='TempalteIcon' src={template} alt='templateIcon'/>
+                <h1 className='TemplateButtonText'>템플릿 제거하기</h1>
             </button>
+            </div>
             <textarea
             className='PostTitle'
             value={postTitle}
