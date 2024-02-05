@@ -6,6 +6,9 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import deleteButton from '../../img/deleteButton.svg';
 import template from '../../img/template.svg';
 import clear from '../../img/clearButton.svg';
+import BookSearchIcon from 'img/BookSearchIcon.svg';
+
+
 
 const Writing = () => {
   const [textValue, setTextValue] = useState("");
@@ -53,7 +56,12 @@ const Writing = () => {
   return (
     <div className='Writing'>
       <Header />
+      <div className='BookSearchContainer'>
+        <img className='BookSearchIcon' src={BookSearchIcon} alt='BookSearchIcon' />
+        <input className='BookSearchBar' placeholder='책의 제목을 입력해주세요.'/>
+        </div>
       <div className='WritingContainer'>
+      
         <div className='SelectedBookContainer'>
           <div className='BookImg'></div>
           <div>
