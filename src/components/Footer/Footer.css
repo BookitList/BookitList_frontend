@@ -1,14 +1,94 @@
-.FooterContainer {
-  border: 1px solid black;
-  height: 80px;
+.Footer{
+  height: 130px;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
+  border-top: 2px solid #707070;
+}
+
+.FooterContainer {
+  margin: 0 14vw;
+}
+
+.Line{
+  width: 1px;
+  height: 20px;
+  background-color: #707070;
+  margin-left: 32px;
+  margin-right: 30px;
 }
 
 .LogoImage,
 Information {
-  magin: 10px;
+  margin: 10px;
+}
+
+.Container{
+  margin-top: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.TeamMember{
+  display: flex;
+  flex-direction: row;
+}
+
+.Part {
+  margin: 0 0.5vw 0 0;
+  color: #707070;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+
+.Member{
+  margin: 0;
+  margin-right: 2.08vw;
+  color: #707070;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  white-space: pre;
+
+}
+
+.information{
+  white-space: pre;
+  color: #707070;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2;
+  margin: 34.06px 0 0 0;
+}
+
+.FacebookIcon{
+  /* margin-left: 25vw; */
+  margin-right: 0.83vw;
+
+}
+
+h1{
+  margin: 0 0.5vw 0 0;
+  color: #707070;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: -0.24px;
+}
+
+.SNS{
+  margin-left: 25vw;
+  
 }
