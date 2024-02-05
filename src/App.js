@@ -7,6 +7,7 @@ import MyBook from 'pages/MyBook/MyBook';
 import './App.css';
 
 import axios from 'axios';
+import MyPage from 'pages/MyPage/MyPage';
 
 const App = () => {
 
@@ -19,6 +20,7 @@ const App = () => {
         {/* BookDetail 책 데이터마다 링크 다르게 변수처리 */}
         <Route path="/BookDetail"  element={<BookDetail />} /> 
         <Route path="/MyBook"  element={<MyBook />} /> 
+        <Route path="/MyPage"  element={<MyPage />} />  
       </Routes>
     </BrowserRouter>
   );
