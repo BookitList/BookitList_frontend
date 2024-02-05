@@ -4,6 +4,8 @@ import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Categories from 'components/Categories/Categories';
 import MyRecord from './MyRecord/MyRecord'; 
+import Library from './Library/Library';
+import Bookmarks from './Bookmarks/Bookmarks';
 
 const MyPage = () => {
   // 기본 카테고리 state 선언
@@ -14,8 +16,8 @@ const MyPage = () => {
   // 선택된 카테고리에 따른 컴포넌트 매핑
   const categoryComponents = {
     MyRecord: <MyRecord />,
-    Library: <div>서재</div>,
-    Bookmarks: <div>찜한 기록</div>,
+    Library: <Library />,
+    Bookmarks: <Bookmarks />
   };
 
   return (
