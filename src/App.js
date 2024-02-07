@@ -9,7 +9,10 @@ import Writing from 'pages/Writing/Writing';
 import './App.css';
 
 import axios from 'axios';
+
+import MyPage from 'pages/MyPage/MyPage';
 import SearchPage from 'pages/SearchPage/SearchPage';
+
 
 const App = () => {
 
@@ -23,6 +26,7 @@ const App = () => {
         {/* BookDetail 책 데이터마다 링크 다르게 변수처리 */}
         <Route path="/BookDetail"  element={<BookDetail />} /> 
         <Route path="/MyBook"  element={<MyBook />} /> 
+        <Route path="/MyPage"  element={<MyPage />} />  
         <Route path="/Writing"  element={<Writing />} /> 
         <Route path="/SearchPage"  element={<SearchPage />} /> 
       </Routes>
