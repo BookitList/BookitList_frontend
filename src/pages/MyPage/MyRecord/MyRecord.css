@@ -1,0 +1,29 @@
+.DD{
+    margin-top: 46px;
+}
+
+.ReviewContainer{
+    height: 303px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    margin-top: 21px;
+}
+
+
+.ReviewImage{
+    width: 167px;
+    height: 252px;
+    margin: 25px 58px 25px 67px;
+    background-color: gray;
+}
+
+.ReviewTitle{
+    margin: 112px 0 0 0;
+    font-size: 20px;
+}
+
+.ReviewDate{
+    margin-top: 19px;
+}
