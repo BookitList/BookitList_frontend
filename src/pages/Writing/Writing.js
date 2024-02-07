@@ -105,12 +105,14 @@ const Writing = () => {
                   <img className='ClearButton' src={clear} alt='clearButton' onClick={handleClearTitle}/>
               )}
             </div>
+            <div className='PostContainer'>
             <textarea
               className='PostContent'
               value={postContent}
               onChange={(e) => handleSetContent(e)}
               placeholder="내용을 입력하세요"
             ></textarea>
+            </div>
           </div>
         )}
         {isPostWritingVisible && isTemplateVisible && (

@@ -8,6 +8,7 @@ import Writing from 'pages/Writing/Writing';
 import './App.css';
 
 import axios from 'axios';
+import SearchPage from 'pages/SearchPage/SearchPage';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/BookDetail"  element={<BookDetail />} /> 
         <Route path="/MyBook"  element={<MyBook />} /> 
         <Route path="/Writing"  element={<Writing />} /> 
+        <Route path="/SearchPage"  element={<SearchPage />} /> 
       </Routes>
     </BrowserRouter>
   );

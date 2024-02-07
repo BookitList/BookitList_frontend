@@ -130,10 +130,15 @@
   font-weight: 500;
 }
 
+.PostContainer{
+  width: 100%;
+  height: 540px;
+}
+
 .PostContent{
+    margin-top: 20px;
     width: 100%;
     height: 540px;
-    margin-top: 20px;
 }
 
 .OneLineTextArea, .PostContent, .TemplatePost, .TemplatePostEtc{
@@ -150,14 +155,14 @@
   box-sizing: border-box;
 }
 
-.OneLineTextArea:focus,
+/* .OneLineTextArea:focus,
 .PostContent:focus,
 .TemplatePost:focus,
 .TemplatePostEtc:focus,
 .PostTitle:focus {
   outline: none;
   border: 3px solid #9C93FF;
-}
+} */
 
 .PostTitle{
   box-sizing: border-box;
@@ -272,7 +277,7 @@ p{
 .PostTitle {
   width: 100%;
   margin-top: 64px;
-  padding: 20px 0 20px 50px;
+  padding: 20px 70px 20px 50px;
   resize: none;
   border-radius: 30px;
   background: #F8F8F8;
@@ -281,6 +286,7 @@ p{
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
+  box-sizing: border-box;
 }
 
 .ClearButton {
@@ -292,4 +298,11 @@ p{
   border: none;
   font-size: 20px;
   color: #666;
+}
+
+textarea {
+	border: 2px solid rgb(213, 194, 194);
+    	/** outline-color 속성을 추가하면 
+    	focus될 때 테두리 색상을 지정할 수 있다.**/
+        outline-color: #9C93FF;
 }
