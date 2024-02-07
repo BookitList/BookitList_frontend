@@ -26,7 +26,7 @@ const Header = () => {
         Navigate(`/Login`);
     };
 
-    const storedId = localStorage.getItem('id');
+    // const storedId = localStorage.getItem('id');
 
     return (
         <header className='HeaderContainer'>
@@ -59,7 +59,7 @@ const Header = () => {
                 <input className='SearchBar' type = 'text' placeholder='책이름을 검색하세요' required={true}
                 value={searchQuery} onChange={onSearchChangeHandler}/>
 
-                <button className='LoginButton' onClick={gotoLoginPage} style={{display:storedId ? 'none' : 'block'}}>
+                <button className='LoginButton' onClick={gotoLoginPage} >
                     로그인
                 </button>
                 
