@@ -1,70 +1,144 @@
 .Home {
-  color: black;
 }
 .BannerContainer {
   width: 100%;
-  height: 496px;
-  display: flex;
+  height: 500px;
 }
-.swiper {
+
+/* 슬라이더 전체를 감싸는 요소 */
+.slick-slider {
   width: 100%;
-  height: 100%;
-}
+  margin: 0 auto;
+  background-image: url("img/bannerBackground.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  /* Center slide text vertically */
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 33%;
-  height: 100%;
+/* 각 슬라이드 요소 */
+.slick-slide {
+  /* background: #3f51b5;
+  color: #fff; */
+  width: auto !important;
+
+  padding: 40px 0;
+  text-align: center;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.slick-track {
+  transform: translate(0px, 0px);
+  margin: auto;
+}
+
+.BannerImg {
+  width: 550px;
+  margin: auto;
   object-fit: cover;
 }
 
-.swiper-button-next {
-  background: url("img/next.svg") no-repeat;
+/* 현재 활성화된 슬라이드 요소 */
+/* .slick-slide.slick-current {
+  background: #f50057;
+  width: 80px;
+  height: 40px;
+} */
+
+/* 네비게이션 버튼 (이전, 다음 버튼) */
+.slick-prev,
+.slick-next {
+  text-align: center;
+  font-size: 100px;
+  color: gray;
+  top: 0;
+  position: absolute;
 }
-.swiper-button-prev {
-  background: url("img/prev.svg") no-repeat;
+
+.slick-prev {
+  left: 100px;
 }
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  display: none;
+
+.slick-next {
+  left: auto;
+  right: 100px;
+}
+
+/* 점 표시 요소 */
+.slick-dots li button:before {
+  font-size: 16px;
+  color: #3f51b5;
+}
+
+.title {
+  margin-top: 10vh;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .BestContainer,
 .RecentContainer {
-  border: 1px solid black;
-  height: 684px;
+  /* border: 1px solid black; */
+  height: 100vh;
 
-  flex: display;
+  margin: auto 200px;
+
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .BestPost,
 .RecentPost {
-  border: 1px solid blue;
-  height: 396px;
+  /* border: 1px solid blue; */
+  width: 100%;
+  height: 450px;
 }
 
 .BestReview,
 .RecentReview,
 .WeekUser {
-  border: 1px solid yellow;
-  height: 173px;
+  width: 100%;
+  /* border: 1px solid yellow; */
+  height: 250px;
 }
 
 .RecommendUser {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 351px;
+
+  margin: 10vh 200px;
+}
+
+.WeekUser {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.RecommendUserImg {
+  align-items: center;
+  margin: auto;
+  height: 200px;
+}
+
+.HomeInner {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CardImg {
+  width: 100%;
+  height: 122px;
 }
