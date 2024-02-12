@@ -4,6 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
+import arrowPrev from '../../../img/SearchArrowPrev.svg';
+import arrowNext from '../../../img/bookSearchArrow.svg';
+
 
 const BookCarousel = () => {
 
@@ -17,7 +20,7 @@ const BookCarousel = () => {
         { cover: "cover 7", title: "title7", author: "author7" },
         { cover: "cover 8", title: "title8", author: "author8" },
         { cover: "cover 9", title: "title9", author: "author9" },
-        { cover: "cover 10", title: "title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10 title10", author: "author10" },
+        { cover: "cover 10", title: "title10  title10 title10 title10 title10title10 title10title10title10 title10", author: "author10" },
     ];
 
   return (
@@ -33,10 +36,10 @@ const BookCarousel = () => {
             return '<span class="' + className + '">' + (index + 1) + '</span>';
           },
         }}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
+        // navigation={{
+        //   nextEl: '.swiper-button-next',
+        //   prevEl: '.swiper-button-prev',
+        // }}
         modules={[Pagination, Navigation]}
       >
 
@@ -48,9 +51,11 @@ const BookCarousel = () => {
           </SwiperSlide>
         ))}
 
+<div className="PaginationContainer">
+            <img className='PrevArrow' src={arrowPrev} alt="prev" />
         <div className="swiper-pagination"></div>
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
+            <img className='NextArrow' src={arrowNext} alt="next" />
+</div>
       </Swiper>
     </div>
   );
