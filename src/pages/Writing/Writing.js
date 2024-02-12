@@ -7,6 +7,7 @@ import deleteButton from '../../img/deleteButton.svg';
 import template from '../../img/template.svg';
 import clear from '../../img/clearButton.svg';
 import BookSearchIcon from 'img/BookSearchIcon.svg';
+import BookCarousel from './BookCarousel/BookCarousel';
 
 
 
@@ -61,6 +62,8 @@ const Writing = () => {
         <input className='BookSearchBar' placeholder='책의 제목을 입력해주세요.'/>
         </div>
       <div className='WritingContainer'>
+
+        <BookCarousel />
       
         <div className='SelectedBookContainer'>
           <div className='BookImg'></div>
