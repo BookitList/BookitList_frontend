@@ -8,6 +8,7 @@ import template from '../../img/template.svg';
 import clear from '../../img/clearButton.svg';
 import BookSearchIcon from 'img/BookSearchIcon.svg';
 import BookCarousel from './BookCarousel/BookCarousel';
+import axios from 'axios';
 
 
 
@@ -23,6 +24,39 @@ const Writing = () => {
   const [postContent2, setPostContent2] = useState('');
   const [postContent3, setPostContent3] = useState('');
   const [postContent4, setPostContent4] = useState('');
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearch = async (e) => {
+    if (e.key === 'Enter') {
+      try {
+        const response = await axios.get("https://api.bookitlist.store/books/search", {
+          params: {
+            keyword: searchTerm,
+            start: 1,
+            "max-results": 5
+          }
+        });
+        setSearchResults(response.data.bookApiList.map(book => ({
+          title: book.title,
+          author: book.author,
+          cover: book.cover,
+          isBook: book.isBook,
+          isbn13: book.isbn13,
+          description: book.description,
+          pubDate: book.pubDate
+        })));
+        console.log("데이터 받아오기 성공")
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
   const handleSetValue = (e) => {
     setTextValue(e.target.value);
@@ -59,11 +93,17 @@ const Writing = () => {
       <Header />
       <div className='BookSearchContainer'>
         <img className='BookSearchIcon' src={BookSearchIcon} alt='BookSearchIcon' />
-        <input className='BookSearchBar' placeholder='책의 제목을 입력해주세요.'/>
+        <input
+          className='BookSearchBar'
+          placeholder='책의 제목을 입력해주세요.'
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+          onKeyPress={handleSearch}
+        />
         </div>
       <div className='WritingContainer'>
 
-        <BookCarousel />
+      <BookCarousel bookData={searchResults} />
       
         <div className='SelectedBookContainer'>
           <div className='BookImg'></div>
