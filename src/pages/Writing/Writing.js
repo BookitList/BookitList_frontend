@@ -28,6 +28,9 @@ const Writing = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  const [totalSlides, setTotalSlides] = useState(0);
+
+
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -52,6 +55,13 @@ const Writing = () => {
           pubDate: book.pubDate
         })));
         console.log("데이터 받아오기 성공")
+
+        const totalResults = response.data.totalResults;
+        const slidesPerPage = 5;
+        const totalSlides = totalResults % slidesPerPage === 0 ? totalResults / slidesPerPage : Math.floor(totalResults / slidesPerPage) + 1;
+        console.log(totalSlides)
+        setTotalSlides(totalSlides);
+
       } catch (error) {
         console.error(error);
       }
@@ -103,7 +113,7 @@ const Writing = () => {
         </div>
       <div className='WritingContainer'>
 
-      <BookCarousel bookData={searchResults} />
+      <BookCarousel bookData={searchResults} totalSlides={totalSlides} />
       
         <div className='SelectedBookContainer'>
           <div className='BookImg'></div>

@@ -4,9 +4,62 @@
     margin-top: 60.34px;
 }
 
+.BookImageContainer{
+    height: 390px;
+    display: flex;
+    align-items: end;
+}
+
+
 .BookCarousel .BookCover{
+    width: 230px;
+    max-height: 390px;
+}
+
+
+
+/* .BookCarousel .BookCover{
     max-width: 242px;
     height: 355px;
+} */
+
+
+/* .BookCarousel .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+} */
+
+.BookCarousel .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    vertical-align: bottom;
+    
+}
+
+.BookCarousel ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+}
+
+.BookInfoContainer{
+    margin-right: 30px;
+}
+
+.BookCarousel .BookTitle, .BookCarousel .Author {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    vertical-align: bottom;
+    white-space: pre-wrap;
+}
+.BookCarousel img {
+    object-fit: cover; /* 이미지를 요소에 맞게 조절 */
+    vertical-align: top; /* 수직 정렬 설정 */
+    align-items: flex-start;
+    border-radius: 20px;
 }
 
 
