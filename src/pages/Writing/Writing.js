@@ -6,11 +6,9 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import deleteButton from '../../img/deleteButton.svg';
 import template from '../../img/template.svg';
 import clear from '../../img/clearButton.svg';
-import BookSearchIcon from 'img/BookSearchIcon.svg';
+import BookSearchIcon from '../../img/BookSearchIcon.svg';
 import BookCarousel from './BookCarousel/BookCarousel';
 import axios from 'axios';
-
-
 
 const Writing = () => {
   const [textValue, setTextValue] = useState("");
@@ -30,6 +28,8 @@ const Writing = () => {
 
   const [totalSlides, setTotalSlides] = useState(0);
 
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [isBookSelected, setIsBookSelected] = useState(false); // BookCarousel에서 책을 선택했는지 여부를 나타내는 상태
 
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
@@ -42,7 +42,7 @@ const Writing = () => {
           params: {
             keyword: searchTerm,
             start: 1,
-            "max-results": 5
+            "max-results": 300
           }
         });
         setSearchResults(response.data.bookApiList.map(book => ({
@@ -52,7 +52,8 @@ const Writing = () => {
           isBook: book.isBook,
           isbn13: book.isbn13,
           description: book.description,
-          pubDate: book.pubDate
+          pubDate: book.pubDate,
+          publisher: book.publisher
         })));
         console.log("데이터 받아오기 성공")
 
@@ -98,9 +99,20 @@ const Writing = () => {
     setPostTitle('');
   };
 
+  const handleBookClick = (book) => {
+    setSelectedBook(book);
+    setIsBookSelected(true);
+  };
+
+  const handleDeleteBook = () => {
+    setSelectedBook(null);
+    setIsBookSelected(false);
+  };
+
   return (
     <div className='Writing'>
       <Header />
+      {!isBookSelected && (
       <div className='BookSearchContainer'>
         <img className='BookSearchIcon' src={BookSearchIcon} alt='BookSearchIcon' />
         <input
@@ -110,22 +122,37 @@ const Writing = () => {
           onChange={handleSearchTermChange}
           onKeyPress={handleSearch}
         />
-        </div>
+      </div>
+    )}
       <div className='WritingContainer'>
-
-      <BookCarousel bookData={searchResults} totalSlides={totalSlides} />
-      
-        <div className='SelectedBookContainer'>
-          <div className='BookImg'></div>
-          <div>
-            <h1 className='BookTitle'>채식주의자</h1>
-            <p>저자</p>
-            <p>출판사</p>
-            <p>출판일</p>
-            <p className='BookIntroduction'>책 소개</p>
+        {isOneLineWritingVisible && !isBookSelected && (
+          <BookCarousel bookData={searchResults} totalSlides={totalSlides} onBookClick={handleBookClick} />
+        )}
+        {selectedBook && (
+          <div className='SelectedBookContainer'>
+            <img className='BookImg' src={selectedBook.cover} alt="BookCover" />
+            <div>
+              <h1 className='BookTitle'>{selectedBook.title}</h1>
+              <div className='BookDetailContainer'>
+                <p className='Author BookDetailInfo'>저자</p>
+                <p className='AuthorBookDetailData'>{selectedBook.author}</p>
+              </div>
+              <div className='BookDetailContainer'>
+                <p className='Pub BookDetailInfo'>출판사</p>
+                <p className='BookDetailData'>{selectedBook.publisher}</p>
+              </div>
+              <div className='BookDetailContainer'>
+                <p className='Pub BookDetailInfo'>출판일</p>
+                <p className='BookDetailData'>{selectedBook.pubDate}</p>
+              </div>
+              <p className='BookIntroduction'>책 소개</p>
+              <p className='BookIntroData'>{selectedBook.description}</p>
+            </div>
+            <img className='DeleteButton' src={deleteButton} alt='DeleteButton' onClick={handleDeleteBook} />
           </div>
-          <img className='DeleteButton' src={deleteButton} alt='DeleteButton'/>
-        </div>
+        )}
+
+
         <Dropdown
           toggleOneLineWriting={showOneLineWriting}
           togglePostWriting={showPostWriting}

@@ -46,6 +46,7 @@
 
 .BookInfoContainer{
     margin-right: 30px;
+    width: 230px;
 }
 
 .BookCarousel .BookTitle, .BookCarousel .Author {

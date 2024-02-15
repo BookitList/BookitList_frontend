@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './BookCarousel.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -7,36 +7,32 @@ import { Pagination, Navigation } from 'swiper/modules';
 import arrowPrev from '../../../img/SearchArrowPrev.svg';
 import arrowNext from '../../../img/bookSearchArrow.svg';
 
-
-const BookCarousel = ({ bookData, totalSlides }) => {
+const BookCarousel = ({ bookData, totalSlides, onBookClick }) => {
+  if (!bookData || bookData.length === 0) {
+    return null; // bookData가 주어지지 않았거나 빈 배열인 경우에는 아무것도 렌더링하지 않음
+  }
 
   // 각 슬라이드에 다섯 개의 데이터를 표시
   const slides = [];
   for (let i = 0; i < bookData.length; i += 5) {
     const chunk = bookData.slice(i, i + 5);
     slides.push(
-      <SwiperSlide>
+      <SwiperSlide key={i}>
         <ul>
           {chunk.map((book) => (
             <li className='BookInfoContainer'>
-            <div className="BookImageContainer">
-              <img className='BookCover' src={book.cover} alt="BookCover" />
-            </div>
-            <div className="BookDetails">
-              <h2 className='BookTitle'>{book.title}</h2>
-              <p className='Author'>{book.author}</p>
-            </div>
-          </li>
+              <div className="BookImageContainer" onClick={() => onBookClick(book)}> {/* 클릭 이벤트 추가 */}
+                <img className='BookCover' src={book.cover} alt="BookCover" />
+              </div>
+              <div className="BookDetails" onClick={() => onBookClick(book)}>
+                <h2 className='BookTitle'>{book.title}</h2>
+                <p className='Author'>{book.author}</p>
+              </div>
+            </li>
           ))}
         </ul>
       </SwiperSlide>
     );
-  }
-
-  // 페이지 번호 생성
-  const paginationItems = [];
-  for (let i = 0; i < totalSlides; i++) {
-    paginationItems.push(<span key={i} className={`swiper-pagination-bullet ${i === 0 ? 'swiper-pagination-bullet-active' : ''}`}></span>);
   }
 
   return (
@@ -49,21 +45,22 @@ const BookCarousel = ({ bookData, totalSlides }) => {
           el: '.swiper-pagination',
           clickable: true,
           renderBullet: function (index, className) {
-            if (index < 4) { // index가 0부터 시작하므로 3까지만 생성합니다.
+            if (totalSlides && index < totalSlides) { // index가 0부터 시작하므로 totalSlides까지 생성합니다.
               return `<span class="${className}">${index + 1}</span>`;
             }
           },
         }}
-        
         modules={[Pagination, Navigation]}
       >
         {slides}
       </Swiper>
-      <div className="PaginationContainer">
-        <img className='PrevArrow' src={arrowPrev} alt="prev" />
-        <div className="swiper-pagination"></div>
-        <img className='NextArrow' src={arrowNext} alt="next" />
-      </div>
+      {totalSlides && (
+        <div className="PaginationContainer">
+          <img className='PrevArrow' src={arrowPrev} alt="prev" />
+          <div className="swiper-pagination"></div>
+          <img className='NextArrow' src={arrowNext} alt="next" />
+        </div>
+      )}
     </div>
   );
 }
