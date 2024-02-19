@@ -10,7 +10,7 @@
   margin-bottom: 30px;
 }
 
-.BookContainer {
+.SearchPage .BookContainer {
   width: 1092px;
   height: 350px;
   position: relative;
@@ -23,7 +23,7 @@
   justify-content: flex-start;
 }
 
-.BookImg {
+.SearchPage .BookImg {
   border: 1px solid red;
   width: 180px;
   height: 272px;
