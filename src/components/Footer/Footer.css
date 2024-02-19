@@ -26,7 +26,7 @@ Information {
   margin: 10px;
 }
 
-.Container{
+.InfoContainer{
   margin-top: 22px;
   display: flex;
   flex-direction: row;

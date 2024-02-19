@@ -19,7 +19,7 @@ import { Navigation } from 'swiper/modules';
     ];
     
     return (
-      <div>
+      <div className='Carousel'>
         <h1 className='componentName'>{componentName}</h1>
       <Swiper
         slidesPerView={3}

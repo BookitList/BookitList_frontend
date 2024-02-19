@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './MyPage.css';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -20,17 +20,21 @@ const MyPage = () => {
     Bookmarks: <Bookmarks />
   };
 
+
   return (
     <div className='MyPage'>
       <Header />
+      <div className='MyPageContent'>
       <div className='MyPageContainer'>
         <Categories selectedCategory={category} onCategoryChange={onSelect} />
+        <div className='ContentContainer'>
 
-        <div className='Content'>
-          {categoryComponents[category]}
+          <div className='Content'>
+            {categoryComponents[category]}
+          </div>
         </div>
       </div>
-
+      </div>
       <Footer />
     </div>
   );
