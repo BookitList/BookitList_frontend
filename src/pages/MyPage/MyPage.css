@@ -1,14 +1,35 @@
 .MyPage{
     color: black;
     width: 100%;
+    /* display: flex;
+    justify-content: center; */
+
+}
+
+.MyPageContent{
+    display: flex;
+    justify-content: center;
+
 }
 
 .MyPageContainer{
-    margin: 0 15vw;
+    /* margin: 0 15vw; */
     /* margin: 0 288px; */
+    min-height: 1842px;
+    border: 1px solid rebeccapurple;
+    width: 1344px;
 }
 
 .Content{
     min-height: 1842px;
-    border: 1px solid rebeccapurple;
+    border: 1px solid rebeccapurple; 
+    width: 1344px;
+}
+
+
+.ContentContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
 }

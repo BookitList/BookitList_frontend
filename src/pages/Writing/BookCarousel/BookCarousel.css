@@ -1,0 +1,153 @@
+.BookCarousel{
+    color: black;
+    width: 100%;
+    margin-top: 60.34px;
+}
+
+.BookImageContainer{
+    height: 390px;
+    display: flex;
+    align-items: end;
+}
+
+
+.BookCarousel .BookCover{
+    width: 230px;
+    max-height: 390px;
+}
+
+
+
+/* .BookCarousel .BookCover{
+    max-width: 242px;
+    height: 355px;
+} */
+
+
+/* .BookCarousel .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+} */
+
+.BookCarousel .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    vertical-align: bottom;
+    
+}
+
+.BookCarousel ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+}
+
+.BookInfoContainer{
+    margin-right: 30px;
+    width: 230px;
+}
+
+.BookCarousel .BookTitle, .BookCarousel .Author {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    vertical-align: bottom;
+    white-space: pre-wrap;
+}
+.BookCarousel img {
+    object-fit: cover; /* 이미지를 요소에 맞게 조절 */
+    vertical-align: top; /* 수직 정렬 설정 */
+    align-items: flex-start;
+    border-radius: 20px;
+}
+
+
+.BookCarousel .BookTitle{
+    color: #333;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 16px 0 8px 0;
+    white-space: pre-wrap;
+}
+
+.BookCarousel .Author{
+    margin: 0;
+    color: #999;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    white-space: pre-wrap;
+}
+
+
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+
+.swiper-pagination-bullet{
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    margin-right: 4px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 100%;
+    border: 1px solid white;
+}
+
+.swiper-pagination-bullet-active {
+    width: 24px;
+    height: 24px;
+    background-color: #2F1DFF;
+    border-radius: 100%;
+    color: white;
+    text-align: center;
+    line-height: 23px;
+}
+
+.swiper-pagination-bullet:hover{
+    border: 1px solid #D9D9D9;
+    cursor: pointer;
+}
+
+  .BookCarousel .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+    content: none;
+  }
+
+  .BookCarousel .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+    content: none;
+}
+
+.PaginationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PrevArrow{
+    margin-right: 24px;
+}
+.NextArrow{
+    margin-left: 24px;
+
+}
+
+.IsBookFalse{
+    filter: brightness(40%);
+
+}
+
+

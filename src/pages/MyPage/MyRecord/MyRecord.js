@@ -4,7 +4,7 @@ import './MyRecord.css';
 const MyRecord = () => {
   return (
     <div className='MyRecord'>
-        <div>
+        <div className='MyRecordContainer'>
             <div className='DD'>드롭다운</div>
             <div className='ReviewContainer'>
               <div className='ReviewImage'>image</div>
