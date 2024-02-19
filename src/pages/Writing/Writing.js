@@ -9,6 +9,7 @@ import clear from '../../img/clearButton.svg';
 import BookSearchIcon from '../../img/BookSearchIcon.svg';
 import BookCarousel from './BookCarousel/BookCarousel';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Writing = () => {
   const [textValue, setTextValue] = useState("");
@@ -70,21 +71,15 @@ const Writing = () => {
     }
   };
 
-  const [accessToken, setAccessToken] = useState(null);
+  const access_token = localStorage.getItem("access_token");
+  console.log("access_token",access_token);
 
-  useEffect(() => {
-    // 로컬 스토리지에서 accessToken 가져오기
-    const storedAccessToken = localStorage.getItem('accessToken');
-    if (storedAccessToken) {
-      setAccessToken(storedAccessToken);
-    }
-  }, []); // 컴포넌트가 처음 렌더링될 때만 실행되도록 []
 
   const handleRegistration = async () => {
-    if (accessToken) {
+    if (access_token) {
       // 엑세스 토큰을 포함한 헤더 설정
       const headers = {
-        'Authorization': `Bearer ${accessToken}`
+        'Authorization': `Bearer ${access_token}`
       };
 
       // 한줄 요약 내용을 서버에 POST
@@ -209,7 +204,16 @@ const Writing = () => {
           toggleOneLineWriting={showOneLineWriting}
           togglePostWriting={showPostWriting}
         />
-        {isOneLineWritingVisible && (
+        {!selectedBook&& isOneLineWritingVisible && (
+          <textarea
+            className='notSelectedBook'
+            value={textValue}
+            onChange={(e) => handleSetValue(e)}
+            placeholder="책 등록 후 글쓰기가 가능합니다"
+            readOnly={true}
+          ></textarea>
+        )}
+        {selectedBook && isOneLineWritingVisible && (
           <textarea
             className='OneLineTextArea'
             value={textValue}
