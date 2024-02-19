@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 import './Header.css';
 import InputSearchIcon from 'img/InputSearchIcon.svg';
+import Logo from 'img/Logo.svg';
 
 const Header = () => {
     const navigate = useNavigate();
     const access_token = localStorage.getItem('access_token');
-    const[keyword,setKeyword] = useState('채식주의자'); //검색어 변수
-    const[start,setStart] = useState(1); //페이징 변수
+    // const[keyword,setKeyword] = useState('채식주의자'); //검색어 변수
+    // const[start,setStart] = useState(1); //페이징 변수
     // const[last,setLast] = useState(1); 마지막 페이지 변수 = max-result/10
   
 //     const [documents,setDocuments] = useState(null);
@@ -44,9 +45,16 @@ const gotoLoginPage = () => {
     navigate('/Login');
 };
 
-
 const LoginButton = () => (
-    <button className='LoginButton' onClick={gotoLoginPage} >
+    <button
+    className='LoginButton'
+    onClick={gotoLoginPage}
+    style={{
+        backgroundColor: access_token ? 'white' : '#0b0087' ,
+        color: access_token ? '#666666' : 'white',
+        border: '1px solid #EBEBEB'
+    }}
+    >
       {access_token ? '로그아웃' : '로그인'}
     </button>
   );
@@ -58,22 +66,22 @@ return (
 
         <div className='HeaderLeft'>
             <div className='LeftItem'>
-                <a href='/' style={{textDecoration:'none'}}>
-                    Bookit List
+                <a href='/' style={{marginRight:'30px'}}>
+                    <img src={Logo} alt='Logo' />
                 </a>
             </div>
             <div className='LeftItem'>
-                <a href='/' style={{textDecoration:'none'}}>
+                <a href='/' style={{textDecoration:'none',color:'#0B0087'}}>
                     피드
                 </a>
             </div>
             <div className='LeftItem'>
-                <a href='/' style={{textDecoration:'none'}}>
+                <a href='/Writing' style={{textDecoration:'none',color:'#0B0087'}}>
                     글쓰기
                 </a>
             </div>
             <div className='LeftItem'>
-                <a href='/' style={{textDecoration:'none'}}>
+                <a href='/MyPage' style={{textDecoration:'none',color:'#0B0087'}}>
                     마이페이지
                 </a>
             </div>

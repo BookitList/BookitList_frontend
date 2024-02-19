@@ -45,8 +45,8 @@ const SearchPage = () => {
         <div className='SearchPageContainer'>
 
           {/* {documents.map(d=>( */}
-            <div className='BookContainer'>
-              <div className='BookImg'
+            <div className='sBookContainer'>
+              <div className='sBookImg'
               style={{
               backgroundImage: 'heartGrayIcons', // cover 상태를 배경 이미지로 설정
               backgroundPosition: 'center',
@@ -55,13 +55,13 @@ const SearchPage = () => {
                 {/* <img src={d.thumbnail ? d.thumbnail:'http://via.placeholder.com/180X260'} alt="" /> */}
               </div>
               
-              <div className='BookDescription'>
+              <div className='sBookDescription'>
                 <div className='BookTitle'>
                   {/* `${title}` */} 책 제목
                   </div>
                 <img className='heart' src={heartGaryIcons} alt='Heart'></img>
                 
-                <div className='BookDetail'>
+                <div className='sBookDetail'>
                   <h6>저자</h6>
                     {/* `${author}` */}
                   <h6>출판사</h6>
@@ -73,7 +73,7 @@ const SearchPage = () => {
                   <h6 style={{display:'inline'}}>한줄요약 | </h6>
                     {/* `(${numOneLine})개` */}
                 </div>
-                <div className='BookIntro'>
+                <div className='sBookIntro'>
                   <h6>책 소개</h6>
                     {/* `${description}` */}
                 </div>
@@ -85,7 +85,6 @@ const SearchPage = () => {
               </div>
 
             </div>
-          )
           {/* )} */}
           <div>
             {/* <button onClick={()=>setPage(page-1)} disabled={page===1}>이전</button>
