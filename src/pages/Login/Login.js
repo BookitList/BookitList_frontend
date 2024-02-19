@@ -26,7 +26,7 @@ const Login = () => {
     return(
         <div className='LoginPage'>
             <Header />
-            <div className='Container'>
+            <div className='FullContainer'>
                 <img className='loginContainer' src={LoginContainer} alt="LoginContainer"/>
                 <div className='loginBox'>
                     <img className='naverBtn' id='naverIDLogin' src={NaverBtn} alt="NaverBtn" onClick={naverClick}/>
