@@ -1,19 +1,74 @@
-.SearchPage{
-    color: black;
-    width: 100%;
+.SearchPage {
+  color: black;
+  width: 100%;
 }
 
-.SearchPageContainer{
-    margin: 0 15vw;
-    margin-top: 67px;
-    margin-bottom: 30px;
-
+.SearchPageContainer {
+  width: 100%;
+  margin: 0 15vw;
+  margin-top: 67px;
+  margin-bottom: 30px;
 }
 
-.BookContainer{
-    width: 1344px;
-    height: 455px;
-    border-radius: 40px;
-    background: var(--naver-text, #FFF);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+.BookContainer {
+  width: 1092px;
+  height: 350px;
+  position: relative;
+  border-radius: 10px;
+  background: var(--naver-text, #fff);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.BookImg {
+  border: 1px solid red;
+  width: 180px;
+  height: 272px;
+  position: absolute;
+  /* top: -10px;
+  bottom: auto;
+  left: auto;
+  right: 870px; */
+}
+
+.BookDescription {
+  border: 1px solid black;
+  color: black;
+  position: relative;
+  width: 100%;
+  margin: 50px;
+  margin-left: 250px;
+}
+
+.heart {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.BookDetail h6 {
+  color: black;
+  margin: 0 auto;
+}
+
+.BookIntro h6 {
+  position: absolute;
+  right: 50%;
+  top: 100px;
+  color: black;
+}
+
+button {
+  background-color: rgb(88, 61, 188);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+button:disabled {
+  background-color: gray;
 }
