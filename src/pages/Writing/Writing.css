@@ -370,6 +370,8 @@ h1{
   font-style: normal;
   font-weight: 500;
   box-sizing: border-box;
+  outline-color: #9C93FF;
+  border: 2px solid none;
 }
 
 .ClearButton {

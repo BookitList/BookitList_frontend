@@ -82,28 +82,74 @@ const Writing = () => {
         'Authorization': `Bearer ${access_token}`
       };
 
-      // 한줄 요약 내용을 서버에 POST
-      if (textValue.length >= 1 && textValue.length <= 50) {
-        try {
-          const response = await axios.post('https://api.bookitlist.store/reviews', {
-            isbn13: selectedBook.isbn13,
-            content: textValue,
-            status: 'PUBLIC'
-          }, {
-            headers: headers // 헤더 추가
-          });
-          console.log('한줄 요약 등록 성공:', response.data);
-        } catch (error) {
-          console.error('한줄 요약 등록에 실패:', error);
+      if(selectedBook){
+        if(isOneLineWritingVisible)
+        {
+          // 한줄 요약 내용을 서버에 POST
+            if (textValue.length >= 1 && textValue.length <= 50) {
+              try {
+                const response = await axios.post('https://api.bookitlist.store/reviews', {
+                  isbn13: selectedBook.isbn13,
+                  content: textValue,
+                  status: 'PUBLIC'
+                }, {
+                  headers: headers // 헤더 추가
+                });
+                console.log('한줄 요약 등록 성공:', response.data);
+              } catch (error) {
+                console.error('한줄 요약 등록에 실패:', error);
+              }
+            } else {
+              console.warn('한줄 요약은 1~50자 사이어야 합니다.');
+            }
+          // } else {
+          //   console.warn('사용자가 인증되지 않았습니다.');
+          //   // 로그인 페이지로 리디렉션 또는 인증 요구 등의 작업 수행
+          // }
         }
-      } else {
-        console.warn('한줄 요약은 1~50자 사이어야 합니다.');
+        else if(isPostWritingVisible && !isTemplateVisible){
+          try {
+            const response = await axios.post('https://api.bookitlist.store/posts', {
+              isbn13: selectedBook.isbn13,
+              title: postTitle,
+              content: postContent,
+              status: 'PUBLIC',
+              template: 'NON'
+            },  {
+              headers: headers 
+            });
+            console.log('포스트 등록 성공:', response.data);
+          } catch (error) {
+            console.error('포스트 등록에 실패:', error);
+          }
+        
+        }
+
+        else if(isPostWritingVisible && isTemplateVisible){
+
+          try {
+            const response = await axios.post('https://api.bookitlist.store/posts', {
+              isbn13: selectedBook.isbn13,
+              title: postTitle,
+              content: `${postContent1}<============================>${postContent2}<============================>${postContent3}<============================>${postContent4}`,
+
+              status: 'PUBLIC',
+              template: 'TEMPLATE'
+            }, {
+              headers: headers
+            });
+            console.log('TEMPLATE 포스트 등록 성공:', response.data);
+          } catch (error) {
+            console.error('TEMPLATE 포스트 등록에 실패:', error);
+          }
+
+        }
+
       }
-    } else {
-      console.warn('사용자가 인증되지 않았습니다.');
-      // 로그인 페이지로 리디렉션 또는 인증 요구 등의 작업 수행
     }
-  };
+    };
+
+      
 
   const handleSetValue = (e) => {
     setTextValue(e.target.value);
@@ -242,12 +288,12 @@ const Writing = () => {
               )}
             </div>
             <div className='PostContainer'>
-            <textarea
-              className='PostContent'
-              value={postContent}
-              onChange={(e) => handleSetContent(e)}
-              placeholder="내용을 입력하세요"
-            ></textarea>
+              <textarea
+                className='PostContent'
+                value={postContent}
+                onChange={(e) => handleSetContent(e)}
+                placeholder="내용을 입력하세요"
+              ></textarea>
             </div>
           </div>
         )}
