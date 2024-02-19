@@ -3,6 +3,7 @@ import './Footer.css';
 import FooterLogo from '../../img/Logo.svg';
 import FacebookIcon from '../../img/Facebook.svg';
 import InstagramIcon from '../../img/Instagram.svg';
+import GithubIcon from '../../img/github.svg';
 
 const Footer = () => {
     return(
@@ -39,7 +40,7 @@ const Footer = () => {
                 </p>
                 </div>
                 <div className="SNS">
-                    <img className='FacebookIcon' src={FacebookIcon} alt="FacebookIcon"/>
+                    <img className='GithubIcon' src={GithubIcon} alt="GithubIcon"/>
                     <img className='InstagramIcon' src={InstagramIcon} alt="InstagramIcon"/>
                 </div>
             </div>
