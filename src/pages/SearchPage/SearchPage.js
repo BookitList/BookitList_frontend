@@ -86,8 +86,7 @@ const SearchPage = () => {
 
             </div>
           )
-          {/* ) */}
-          }
+          {/* )} */}
           <div>
             {/* <button onClick={()=>setPage(page-1)} disabled={page===1}>이전</button>
             <span style={{margin:'10px'}}>{page}/{last}</span>
