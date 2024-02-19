@@ -22,11 +22,11 @@ const BookCarousel = ({ bookData, totalSlides, onBookClick }) => {
           {chunk.map((book) => (
             <li className='BookInfoContainer'>
               <div className="BookImageContainer" onClick={() => onBookClick(book)}> {/* 클릭 이벤트 추가 */}
-                <img className='BookCover' src={book.cover} alt="BookCover" />
+              <img className={`BookCover ${!book.isBook ? 'IsBookFalse' : ''}`} src={book.cover} alt="BookCover" />
               </div>
               <div className="BookDetails" onClick={() => onBookClick(book)}>
                 <h2 className='BookTitle'>{book.title}</h2>
-                <p className='Author'>{book.author}</p>
+                {book.isBook ? <p className='Author'>{book.author}</p> : <p className='Author'>책 정보 확인 불가</p>}
               </div>
             </li>
           ))}

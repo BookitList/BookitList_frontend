@@ -145,4 +145,9 @@
 
 }
 
+.IsBookFalse{
+    filter: brightness(40%);
+
+}
+
 

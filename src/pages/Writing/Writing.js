@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Writing.css';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -53,7 +53,8 @@ const Writing = () => {
           isbn13: book.isbn13,
           description: book.description,
           pubDate: book.pubDate,
-          publisher: book.publisher
+          publisher: book.publisher,
+          isbook: book.isbook,
         })));
         console.log("데이터 받아오기 성공")
 
@@ -66,6 +67,46 @@ const Writing = () => {
       } catch (error) {
         console.error(error);
       }
+    }
+  };
+
+  const [accessToken, setAccessToken] = useState(null);
+
+  useEffect(() => {
+    // 로컬 스토리지에서 accessToken 가져오기
+    const storedAccessToken = localStorage.getItem('accessToken');
+    if (storedAccessToken) {
+      setAccessToken(storedAccessToken);
+    }
+  }, []); // 컴포넌트가 처음 렌더링될 때만 실행되도록 []
+
+  const handleRegistration = async () => {
+    if (accessToken) {
+      // 엑세스 토큰을 포함한 헤더 설정
+      const headers = {
+        'Authorization': `Bearer ${accessToken}`
+      };
+
+      // 한줄 요약 내용을 서버에 POST
+      if (textValue.length >= 1 && textValue.length <= 50) {
+        try {
+          const response = await axios.post('https://api.bookitlist.store/reviews', {
+            isbn13: selectedBook.isbn13,
+            content: textValue,
+            status: 'PUBLIC'
+          }, {
+            headers: headers // 헤더 추가
+          });
+          console.log('한줄 요약 등록 성공:', response.data);
+        } catch (error) {
+          console.error('한줄 요약 등록에 실패:', error);
+        }
+      } else {
+        console.warn('한줄 요약은 1~50자 사이어야 합니다.');
+      }
+    } else {
+      console.warn('사용자가 인증되지 않았습니다.');
+      // 로그인 페이지로 리디렉션 또는 인증 요구 등의 작업 수행
     }
   };
 
@@ -97,6 +138,12 @@ const Writing = () => {
 
   const handleClearTitle = () => {
     setPostTitle('');
+    setPostContent('');
+    setTextValue('');
+    setPostContent1('');
+    setPostContent2('');
+    setPostContent3('');
+    setPostContent4('');
   };
 
   const handleBookClick = (book) => {
@@ -107,6 +154,11 @@ const Writing = () => {
   const handleDeleteBook = () => {
     setSelectedBook(null);
     setIsBookSelected(false);
+  };
+
+  const Registration = () => {
+    handleClearTitle(); // 첫 번째 함수 호출
+    handleRegistration(); // 두 번째 함수 호출
   };
 
   return (
@@ -246,7 +298,7 @@ const Writing = () => {
           </div>
         )}
         <div className='ButtonContainer'>
-          <button className='Registration' onClick={handleClearTitle}>등록하기</button>
+          <button className='Registration' onClick={Registration}>등록하기</button>
         </div>
       </div>
       <Footer />
