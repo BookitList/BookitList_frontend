@@ -9,7 +9,6 @@ import clear from '../../img/clearButton.svg';
 import BookSearchIcon from '../../img/BookSearchIcon.svg';
 import BookCarousel from './BookCarousel/BookCarousel';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 const Writing = () => {
   const [textValue, setTextValue] = useState("");
@@ -93,7 +92,7 @@ const Writing = () => {
                   content: textValue,
                   status: 'PUBLIC'
                 }, {
-                  headers: headers // 헤더 추가
+                  headers: headers
                 });
                 console.log('한줄 요약 등록 성공:', response.data);
               } catch (error) {
@@ -102,10 +101,7 @@ const Writing = () => {
             } else {
               console.warn('한줄 요약은 1~50자 사이어야 합니다.');
             }
-          // } else {
-          //   console.warn('사용자가 인증되지 않았습니다.');
-          //   // 로그인 페이지로 리디렉션 또는 인증 요구 등의 작업 수행
-          // }
+
         }
         else if(isPostWritingVisible && !isTemplateVisible){
           try {
@@ -198,8 +194,8 @@ const Writing = () => {
   };
 
   const Registration = () => {
-    handleClearTitle(); // 첫 번째 함수 호출
-    handleRegistration(); // 두 번째 함수 호출
+    handleClearTitle(); 
+    handleRegistration(); 
   };
 
   return (
@@ -246,10 +242,12 @@ const Writing = () => {
         )}
 
 
+      {isBookSelected && (
         <Dropdown
           toggleOneLineWriting={showOneLineWriting}
           togglePostWriting={showPostWriting}
         />
+        )}
         {!selectedBook&& isOneLineWritingVisible && (
           <textarea
             className='notSelectedBook'
@@ -347,9 +345,11 @@ const Writing = () => {
             ></textarea>
           </div>
         )}
+        {isBookSelected && (
         <div className='ButtonContainer'>
           <button className='Registration' onClick={Registration}>등록하기</button>
         </div>
+        )}
       </div>
       <Footer />
     </div>

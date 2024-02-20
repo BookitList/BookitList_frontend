@@ -12,6 +12,7 @@ import axios from 'axios';
 
 import MyPage from 'pages/MyPage/MyPage';
 import SearchPage from 'pages/SearchPage/SearchPage';
+import WritingDetail from 'pages/WritingDetail/WritingDetail';
 
 
 const App = () => {
@@ -28,7 +29,8 @@ const App = () => {
         <Route path="/MyBook"  element={<MyBook />} /> 
         <Route path="/MyPage"  element={<MyPage />} />  
         <Route path="/Writing"  element={<Writing />} /> 
-        <Route path="/SearchPage"  element={<SearchPage />} /> 
+        <Route path="/SearchPage"  element={<SearchPage />} />
+        <Route path="/WritingDetail"  element={<WritingDetail />} />  
       </Routes>
     </BrowserRouter>
   );
