@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import arrowPrev from '../../../img/SearchArrowPrev.svg';
 import arrowNext from '../../../img/bookSearchArrow.svg';
+import AlertTriangle from '../../../img/alertTriangle.svg';
 
 const BookCarousel = ({ bookData, totalSlides, onBookClick }) => {
   if (!bookData || bookData.length === 0) {
@@ -22,7 +23,19 @@ const BookCarousel = ({ bookData, totalSlides, onBookClick }) => {
           {chunk.map((book) => (
             <li className='BookInfoContainer'>
               <div className="BookImageContainer" onClick={() => onBookClick(book)}> {/* 클릭 이벤트 추가 */}
-              <img className={`BookCover ${!book.isBook ? 'IsBookFalse' : ''}`} src={book.cover} alt="BookCover" />
+              {book.isBook && 
+              (<img className={`BookCover ${!book.isBook ? 'IsBookFalse' : ''}`} src={book.cover} alt="BookCover" />
+              )}
+      {!book.isBook && (
+        <div>
+        <div className="IsBookFalse">
+          <img className="AlertTriangle" src={AlertTriangle} alt="NonBookIcon" />
+          <p className='NotBook'>책 정보 확인 불가</p>
+          <p className='NotWriting'>포스트 및 한줄요약 작성이 불가합니다</p>
+        </div>
+        </div>
+      )}
+
               </div>
               <div className="BookDetails" onClick={() => onBookClick(book)}>
                 <h2 className='BookTitle'>{book.title}</h2>
