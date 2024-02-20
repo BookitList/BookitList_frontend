@@ -9,6 +9,7 @@ import clear from '../../img/clearButton.svg';
 import BookSearchIcon from '../../img/BookSearchIcon.svg';
 import BookCarousel from './BookCarousel/BookCarousel';
 import axios from 'axios';
+import NotBookRegistration from '../../img/notBookRegistration.svg';
 
 const Writing = () => {
   const [textValue, setTextValue] = useState("");
@@ -30,6 +31,7 @@ const Writing = () => {
 
   const [selectedBook, setSelectedBook] = useState(null);
   const [isBookSelected, setIsBookSelected] = useState(false); // BookCarousel에서 책을 선택했는지 여부를 나타내는 상태
+  const [isBookCarouselVisible, setIsBookCarouselVisible] = useState(false);
 
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
@@ -37,6 +39,8 @@ const Writing = () => {
 
   const handleSearch = async (e) => {
     if (e.key === 'Enter') {
+
+      setIsBookCarouselVisible(true);
       try {
         const response = await axios.get("https://api.bookitlist.store/books/search", {
           params: {
@@ -214,7 +218,7 @@ const Writing = () => {
       </div>
     )}
       <div className='WritingContainer'>
-        {isOneLineWritingVisible && !isBookSelected && (
+        { !isBookSelected && (
           <BookCarousel bookData={searchResults} totalSlides={totalSlides} onBookClick={handleBookClick} />
         )}
         {selectedBook && (
@@ -248,14 +252,8 @@ const Writing = () => {
           togglePostWriting={showPostWriting}
         />
         )}
-        {!selectedBook&& isOneLineWritingVisible && (
-          <textarea
-            className='notSelectedBook'
-            value={textValue}
-            onChange={(e) => handleSetValue(e)}
-            placeholder="책 등록 후 글쓰기가 가능합니다"
-            readOnly={true}
-          ></textarea>
+        {!isBookSelected && !isBookCarouselVisible && (
+          <img className='NotBookRegistration' src={NotBookRegistration} alt='NotBookRegistration'/>
         )}
         {selectedBook && isOneLineWritingVisible && (
           <textarea
