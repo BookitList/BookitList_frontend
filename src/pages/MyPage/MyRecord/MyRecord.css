@@ -3,28 +3,63 @@
 }
 
 .ReviewContainer{
-    height: 303px;
-    border: 1px solid red;
+    width: 434px;
+    height: 154px;
     display: flex;
     flex-direction: row;
     border-radius: 20px;
     margin-top: 21px;
+    border-radius: 15px;
+    background: var(--naver-text, #FFF);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    
 }
 
 
 .ReviewImage{
-    width: 167px;
-    height: 252px;
-    margin: 25px 58px 25px 67px;
+    width: 100px;
+    height: 151px;  
+    margin: 16px;
     background-color: gray;
+    border-radius: 9.359px;
+    box-shadow: 0px 0px 5.615px 0px rgba(0, 0, 0, 0.25);
 }
 
 .ReviewTitle{
-    margin: 112px 0 0 0;
+    margin: 16px 0 0 0;
     font-size: 20px;
 }
 
-.ReviewDate{
-    margin-top: 19px;
+.ReviewAuthor{
+    margin: 2px 0 0 0;
+    overflow: hidden;
+color: #999;
+
+text-overflow: ellipsis;
+font-family: Pretendard;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 20px; /* 142.857% */
+letter-spacing: -0.28px;
 }
+
+.ReviewContent{
+    width: 290px;
+    height: 62px;
+    border-radius: 10px;
+    background: #F8F8F8;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.10);
+    padding: 10px 11px;
+    box-sizing: border-box;
+    color: #3C3C3C;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+
+}
+
 

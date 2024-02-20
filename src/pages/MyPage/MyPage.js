@@ -24,7 +24,6 @@ const MyPage = () => {
   return (
     <div className='MyPage'>
       <Header />
-      <div className='MyPageContent'>
       <div className='MyPageContainer'>
         <Categories selectedCategory={category} onCategoryChange={onSelect} />
         <div className='ContentContainer'>
@@ -33,7 +32,6 @@ const MyPage = () => {
             {categoryComponents[category]}
           </div>
         </div>
-      </div>
       </div>
       <Footer />
     </div>
