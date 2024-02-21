@@ -3,8 +3,22 @@ import './Footer.css';
 import FooterLogo from '../../img/Logo.svg';
 import FacebookIcon from '../../img/Facebook.svg';
 import InstagramIcon from '../../img/Instagram.svg';
+import GithubIcon from '../../img/github.svg';
 
 const Footer = () => {
+
+    const handleInstagramClick =()=>{
+        window.open('https://www.instagram.com/bookitlist_official/');
+
+    }
+
+    const handleGithubClick =()=>{
+        window.open('https://github.com/BookitList');
+
+    }
+
+
+
     return(
         <footer className="Footer">
             <div className="FooterContainer">
@@ -39,8 +53,8 @@ const Footer = () => {
                 </p>
                 </div>
                 <div className="SNS">
-                    <img className='FacebookIcon' src={FacebookIcon} alt="FacebookIcon"/>
-                    <img className='InstagramIcon' src={InstagramIcon} alt="InstagramIcon"/>
+                    <img className='GithubIcon' src={GithubIcon} alt="GithubIcon" onClick={handleGithubClick}/>
+                    <img className='InstagramIcon' src={InstagramIcon} alt="InstagramIcon" onClick={handleInstagramClick}/>
                 </div>
             </div>
             <div>

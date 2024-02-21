@@ -72,9 +72,11 @@ Information {
   margin: 34.06px 0 0 0;
 }
 
-.FacebookIcon{
+.GithubIcon{
   /* margin-left: 25vw; */
   margin-right: 0.83vw;
+  width: 32px;
+  height: 32px;
 
 }
 
@@ -89,6 +91,6 @@ h1{
 }
 
 .SNS{
-  margin-left: 25vw;
+  margin-left: 351px;
   
 }

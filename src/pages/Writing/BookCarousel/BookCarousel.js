@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import arrowPrev from '../../../img/SearchArrowPrev.svg';
 import arrowNext from '../../../img/bookSearchArrow.svg';
+import AlertTriangle from '../../../img/alertTriangle.svg';
 
 const BookCarousel = ({ bookData, totalSlides, onBookClick }) => {
   if (!bookData || bookData.length === 0) {
@@ -18,20 +19,28 @@ const BookCarousel = ({ bookData, totalSlides, onBookClick }) => {
     const chunk = bookData.slice(i, i + 5);
     slides.push(
       <SwiperSlide key={i}>
-        <ul>
-          {chunk.map((book) => (
-            <li className='BookInfoContainer'>
-              <div className="BookImageContainer" onClick={() => onBookClick(book)}> {/* 클릭 이벤트 추가 */}
-              <img className={`BookCover ${!book.isBook ? 'IsBookFalse' : ''}`} src={book.cover} alt="BookCover" />
-              </div>
-              <div className="BookDetails" onClick={() => onBookClick(book)}>
-                <h2 className='BookTitle'>{book.title}</h2>
-                {book.isBook ? <p className='Author'>{book.author}</p> : <p className='Author'>책 정보 확인 불가</p>}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </SwiperSlide>
+  <ul>
+    {chunk.map((book) => (
+      <li className='BookInfoContainer' key={book.isbn13}>
+        <div className="BookImageContainer" onClick={book.isBook ? () => onBookClick(book) : null}>
+            {book.isBook ? (
+      <img className={`BookCover ${!book.isBook ? 'IsBookFalse' : ''}`} src={book.cover} alt="BookCover" />
+    ) : (
+      <div className="IsBookFalse">
+        <img className="AlertTriangle" src={AlertTriangle} alt="NonBookIcon" />
+        <p className='NotBook'>책 정보 확인 불가</p>
+        <p className='NotWriting'>포스트 및 한줄요약 작성이 불가합니다</p>
+      </div>
+    )}
+        </div>
+        <div className="BookDetails" onClick={book.isBook ? () => onBookClick(book) : null}>
+          <h2 className='BookTitle'>{book.title}</h2>
+          {book.isBook ? <p className='Author'>{book.author}</p> : <p className='Author'>책 정보 확인 불가</p>}
+        </div>
+      </li>
+    ))}
+  </ul>
+</SwiperSlide>
     );
   }
 
