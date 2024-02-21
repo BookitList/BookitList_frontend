@@ -46,9 +46,9 @@ const MyRecord = () => {
         />
         {/* 선택된 옵션에 따라 다른 내용을 보여줌 */}
         {selectedOption === '한줄요약' && (
-          <div>
-        {dummyReviews.map((review) => (
-          <div className='ReviewContainer'>
+          <div className='ReviewBox'>
+            {dummyReviews.map((review) => (
+              <div className='ReviewContainer' key={review.id}>
                 <div className='ReviewImage'>
                   <img src={review.image} alt={review.title} />
                 </div>
