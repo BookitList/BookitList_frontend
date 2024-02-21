@@ -40,6 +40,7 @@ const handleLogoutButtonClick= async () => {
         });
         
         localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
         setAccessToken(null);
         setRefreshToken(null);
         console.log('서버에 로그아웃 요청 전송 성공');
@@ -50,7 +51,7 @@ const handleLogoutButtonClick= async () => {
 };
 
 const LoginButton = () => (
-    access_token === null ?(
+    access_token == null || access_token=='null'?(
         <button
             className='LoginButton'
             onClick={gotoLoginPage}
