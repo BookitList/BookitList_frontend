@@ -71,3 +71,42 @@
   display: block;
 }
 
+
+/* 마이페이지 드롭다운 관련 css */
+
+.Dropdown.smallDropdown {
+  width: 90px;
+  height: 30px;
+  margin-top: 18px;
+}
+
+
+.Dropdown.smallDropdown .Dropdown-button {
+  color: #333;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 171.429% */
+  letter-spacing: -0.28px;
+  margin-left: 10px;
+  padding: 3px 0;
+  padding-bottom: 10px;
+}
+
+.Dropdown.smallDropdown .ArrowIcon {
+  width: 12px;
+  height: 12px;
+  margin: 7px 10px 0 2px;
+}
+
+.Dropdown.smallDropdown .Dropdown-content {
+  width: 90px;
+  min-height: 30px;
+  
+}
+
+
+.Dropdown.smallDropdown .Dropdown-content div {
+  font-size: 14px;
+}

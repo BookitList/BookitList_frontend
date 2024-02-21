@@ -6,6 +6,7 @@ import Categories from 'components/Categories/Categories';
 import MyRecord from './MyRecord/MyRecord'; 
 import Library from './Library/Library';
 import Bookmarks from './Bookmarks/Bookmarks';
+import Profile from 'components/Profile/Profile';
 
 const MyPage = () => {
   // 기본 카테고리 state 선언
@@ -24,8 +25,8 @@ const MyPage = () => {
   return (
     <div className='MyPage'>
       <Header />
-      <div className='MyPageContent'>
       <div className='MyPageContainer'>
+      <Profile />
         <Categories selectedCategory={category} onCategoryChange={onSelect} />
         <div className='ContentContainer'>
 
@@ -33,7 +34,6 @@ const MyPage = () => {
             {categoryComponents[category]}
           </div>
         </div>
-      </div>
       </div>
       <Footer />
     </div>

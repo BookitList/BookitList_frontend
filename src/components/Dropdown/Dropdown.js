@@ -3,11 +3,13 @@ import './Dropdown.css';
 import arrow from '../../img/dropdownArrow.svg';
 import clickedArrow from '../../img/dropdownClickArrow.svg';
 
-const Dropdown = ({ toggleOneLineWriting, togglePostWriting }) => {
+const Dropdown = ({ toggleOneLineWriting, togglePostWriting, smallDropdown  }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [buttonText, setButtonText] = useState('한줄요약');
   const [arrowImage, setArrowImage] = useState(arrow);
+
+  // const dropdownClass = `Dropdown ${size === 'small' ? 'smallDropdown' : size === 'large' ? 'Dropdown' : ''}`;
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -24,7 +26,7 @@ const Dropdown = ({ toggleOneLineWriting, togglePostWriting }) => {
   };
 
   return (
-    <div className='Dropdown'>
+    <div className={`Dropdown ${smallDropdown ? 'smallDropdown' : ''}`}>
       <div
         // className={`Dropdown-button ${isButtonClicked ? 'clicked' : ''}`}
         className="Dropdown-button"

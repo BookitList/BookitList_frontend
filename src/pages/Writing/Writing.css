@@ -1,10 +1,12 @@
 .Writing {
     color: black;
     width: 100%;
+    min-height: 150vh;
 }
 
 .WritingContainer{
-    margin: 0 15vw;
+    margin: 0 12vw;
+    min-height: 100vh;
     
 
 }
@@ -59,14 +61,15 @@
   justify-content: space-between;
   width: 100%;
   /* height: 455px; */
-  padding-bottom: 50px;
   border-radius: 40px;
   background: #FFF;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   margin-top: 144px;
+  flex-direction: row;
+  margin-bottom: 50px;
 }
 
-.DeleteButton{
+.Writing .DeleteButton{
   margin-left: auto;
   width: 50px;
   height: 50px;
@@ -90,6 +93,13 @@
 
 }
 
+.notSelectedBook{
+  width: 100%;
+  height: 176px;
+  margin-top: 44px;
+
+}
+
 .placeholder {
   color: #999;
   font-size: 20px;
@@ -97,7 +107,7 @@
   font-weight: 500;
 }
 
-.ButtonContainer{
+.Writing .ButtonContainer{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -118,7 +128,7 @@
 
 }
 
-.PostTitle{
+.Writing .PostTitle{
   width: 100%;
   height: 68px;
   margin-top: 64px;
@@ -132,18 +142,18 @@
   font-weight: 500;
 }
 
-.PostContainer{
+.Writing .PostContainer{
   width: 100%;
   height: 540px;
 }
 
-.PostContent{
+.Writing .PostContent{
     margin-top: 20px;
     width: 100%;
     height: 540px;
 }
 
-.OneLineTextArea, .PostContent, .TemplatePost, .TemplatePostEtc{
+.Writing .OneLineTextArea, .Writing .PostContent, .Writing .TemplatePost, .Writing .TemplatePostEtc{
   resize: none;
   border-radius: 30px;
   background: #F8F8F8;
@@ -155,6 +165,31 @@
   padding: 40px 0 0 50px;
   width: 100%;
   box-sizing: border-box;
+  border: 2px solid none;
+  outline-color: #9C93FF;
+}
+
+.Writing .notSelectedBook{
+  resize: none;
+  border-radius: 30px;
+  background: #F8F8F8;
+  border: none;
+  color: #666;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  /* padding: 40px 0 0 50px; */
+  width: 100%;
+  border: none;
+  outline: none;
+  line-height: 176px;
+
+}
+
+.Writing .notSelectedBook::placeholder {
+  text-align: center; /* 플레이스홀더 텍스트를 가운데 정렬 */
+  vertical-align: middle; /* 수직 가운데 정렬 */
+  line-height: inherit; /* 수직 가운데 정렬을 위해 상속된 라인 높이 설정 */
 }
 
 /* .OneLineTextArea:focus,
@@ -166,12 +201,12 @@
   border: 3px solid #9C93FF;
 } */
 
-.PostTitle{
+.Writing .PostTitle{
   box-sizing: border-box;
   padding: 20px 0 0 50px;
 }
 
-h1{
+.Writing h1{
   color: #666;
   font-family: Pretendard;
   font-size: 20px;
@@ -182,12 +217,12 @@ h1{
   margin: 80px 0 20px 0;
 }
 
-.TemplatePost{
+.Writing .TemplatePost{
   height: 270px;
 
 }
 
-.TemplatePostEtc{
+.Writing .TemplatePostEtc{
   height: 540px;
 }
 
@@ -195,15 +230,16 @@ h1{
   margin-top: 18px;
 }
 
-.BookImg{
-  width: 235px;
+.SelectedBookContainer .BookImg{
+  max-width: 245px;
   height: 355px;
   border-radius: 20px;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
-  margin: 50px 0 0 50px;
+  /* margin: 50px 50px 0 50px; */
+  margin: 50px;
 }
 
-.BookTitle{
+.Writing .BookTitle{
   margin: 50px 0 23px 57px;
   color: #333;
   font-size: 40px;
@@ -212,7 +248,7 @@ h1{
   line-height: normal;
 }
 
-.BookDetailContainer{
+.Writing .BookDetailContainer{
   display: flex;
   flex-direction: row;
 }
@@ -256,7 +292,7 @@ h1{
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  margin: 32px 0 0 61.06px;
+  margin: 32px 0 10px 61.06px;
 }
 
 .AuthorBookDetailData{
@@ -319,11 +355,11 @@ h1{
 
 }
 
-.PostTitleContainer {
+.Writing .PostTitleContainer {
   position: relative;
 }
 
-.PostTitle {
+.Writing .PostTitle {
   width: 100%;
   margin-top: 64px;
   padding: 20px 70px 20px 50px;
@@ -336,6 +372,8 @@ h1{
   font-style: normal;
   font-weight: 500;
   box-sizing: border-box;
+  outline-color: #9C93FF;
+  border: 2px solid none;
 }
 
 .ClearButton {
@@ -349,9 +387,13 @@ h1{
   color: #666;
 }
 
-textarea {
+/* textarea {
 	border: 2px solid rgb(213, 194, 194);
-    	/** outline-color 속성을 추가하면 
-    	focus될 때 테두리 색상을 지정할 수 있다.**/
+
         outline-color: #9C93FF;
+} */
+
+.NotBookRegistration{
+  margin: 50px 0 228px 0;
+  width: 100%;
 }
