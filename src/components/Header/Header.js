@@ -35,9 +35,12 @@ const handleLogoutButtonClick= async () => {
     
     try{
         await axios.post('https://api.bookitlist.store/logout',{
-            access_token: access_token,
-            refresh_token: refresh_token,
-        });
+            accessToken: access_token,
+            refreshToken: refresh_token,
+        },{
+            headers: {
+                Authorization : `Bearer ${access_token}`
+        }});
         
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
