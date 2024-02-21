@@ -4,10 +4,11 @@
 }
 
 .Container{
-    margin: 0 12vw;
+    margin: 0 23vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .WritingDetailContainer{
@@ -28,6 +29,10 @@
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.90) 15.79%, rgba(248, 248, 248, 0.20) 61.76%);
         backdrop-filter: blur(10px);
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .ContainerHeader{
@@ -49,7 +54,7 @@
 
     .WritingDetail .EditButton{
         position: relative;
-        left: 748px;
+        left: 362px;
         width: 24px;
         height: 24px;
 
@@ -57,7 +62,7 @@
 
     .WritingDetail .DeleteButton{
         position: relative;
-        left: 773px;
+        left: 384px;
         
     }
 
@@ -65,3 +70,14 @@
     margin-top: -25px;
 
 }
+
+.WritingDetailContainer .BookImage{
+    width: 270px;
+    height: 408px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.35);
+    margin-top: 18px;
+    /* margin: 18px 309px 0 309px; */
+    box-sizing: border-box;
+}
+
