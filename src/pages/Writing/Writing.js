@@ -46,7 +46,7 @@ const Writing = () => {
           params: {
             keyword: searchTerm,
             start: 1,
-            "max-results": 300
+            "max-results": 50
           }
         });
         setSearchResults(response.data.bookApiList.map(book => ({
@@ -75,7 +75,7 @@ const Writing = () => {
   };
 
   const access_token = localStorage.getItem("access_token");
-  console.log("access_token",access_token);
+  // console.log("access_token",access_token);
 
 
   const handleRegistration = async () => {
@@ -216,7 +216,7 @@ const Writing = () => {
           onKeyPress={handleSearch}
         />
       </div>
-    )}
+      )}
       <div className='WritingContainer'>
         { !isBookSelected && (
           <BookCarousel bookData={searchResults} totalSlides={totalSlides} onBookClick={handleBookClick} />
@@ -246,7 +246,7 @@ const Writing = () => {
         )}
 
 
-      {isBookSelected && (
+        {isBookSelected && (
         <Dropdown
           toggleOneLineWriting={showOneLineWriting}
           togglePostWriting={showPostWriting}
@@ -349,7 +349,7 @@ const Writing = () => {
         </div>
         )}
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 };
