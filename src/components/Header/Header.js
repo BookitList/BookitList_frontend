@@ -9,6 +9,7 @@ import Logo from 'img/Logo.svg';
 const Header = ({onSearch}) => {
     const navigate = useNavigate();
     const [access_token,setAccessToken] = useState(localStorage.getItem('access_token'));
+    const [refresh_token,setRefreshToken] = useState(localStorage.getItem('refresh_token'));
     const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
@@ -35,10 +36,12 @@ const handleLogoutButtonClick= async () => {
     try{
         await axios.post('https://api.bookitlist.store/logout',{
             access_token: access_token,
+            refresh_token: refresh_token,
         });
         
         localStorage.removeItem('access_token');
-        setAccessToken('');
+        setAccessToken(null);
+        setRefreshToken(null);
         console.log('서버에 로그아웃 요청 전송 성공');
 
     } catch (error){
@@ -47,19 +50,7 @@ const handleLogoutButtonClick= async () => {
 };
 
 const LoginButton = () => (
-    access_token?(
-        <button
-            className='LogoutButton'
-            onClick={handleLogoutButtonClick}
-            style={{
-                backgroundColor: 'white',
-                color: '#666666',
-                border: '1px solid #EBEBEB'
-            }}
-        >
-        로그아웃
-        </button>
-    ) : (
+    access_token === null ?(
         <button
             className='LoginButton'
             onClick={gotoLoginPage}
@@ -71,6 +62,18 @@ const LoginButton = () => (
         >
             로그인
         </button>
+    ) : (
+        <button
+        className='LogoutButton'
+        onClick={handleLogoutButtonClick}
+        style={{
+            backgroundColor: 'white',
+            color: '#666666',
+            border: '1px solid #EBEBEB'
+        }}
+    >
+    로그아웃
+    </button>
     )
   );
   
@@ -79,7 +82,8 @@ const LoginButton = () => (
   // access_token이 변경될 때 localStorage에 저장
   useEffect(() => {
     localStorage.setItem('access_token', access_token);
-  },[access_token]);
+    localStorage.setItem('refresh_token', refresh_token);
+  },[access_token,refresh_token]);
 
 return (
     <header className='HeaderContainer'>

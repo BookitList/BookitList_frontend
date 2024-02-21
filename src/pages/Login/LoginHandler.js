@@ -11,12 +11,13 @@ const LoginHandeler = () => {
   const navigate = useNavigate();
   let params = new URL(window.location.href).searchParams;
   let access_token = params.get("accessToken");
-  // let refresh_token = params.get("refreshToken");
+  let refresh_token = params.get("refreshToken");
   // const [accessTokenFetching, setAccessTokenFetching] =useState(false)
 
   // console.log("access_token: ", access_token)
   // console.log("refresh_token: ", refresh_token)
   localStorage.setItem("access_token", access_token);
+  localStorage.setItem("refresh_token", refresh_token);
 
   useEffect(() => {
     if (access_token) {
