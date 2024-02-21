@@ -128,7 +128,7 @@
 
 }
 
-.PostTitle{
+.Writing .PostTitle{
   width: 100%;
   height: 68px;
   margin-top: 64px;
@@ -142,18 +142,18 @@
   font-weight: 500;
 }
 
-.PostContainer{
+.Writing .PostContainer{
   width: 100%;
   height: 540px;
 }
 
-.PostContent{
+.Writing .PostContent{
     margin-top: 20px;
     width: 100%;
     height: 540px;
 }
 
-.OneLineTextArea, .PostContent, .TemplatePost, .TemplatePostEtc{
+.Writing .OneLineTextArea, .Writing .PostContent, .Writing .TemplatePost, .Writing .TemplatePostEtc{
   resize: none;
   border-radius: 30px;
   background: #F8F8F8;
@@ -169,7 +169,7 @@
   outline-color: #9C93FF;
 }
 
-.notSelectedBook{
+.Writing .notSelectedBook{
   resize: none;
   border-radius: 30px;
   background: #F8F8F8;
@@ -186,7 +186,7 @@
 
 }
 
-.notSelectedBook::placeholder {
+.Writing .notSelectedBook::placeholder {
   text-align: center; /* 플레이스홀더 텍스트를 가운데 정렬 */
   vertical-align: middle; /* 수직 가운데 정렬 */
   line-height: inherit; /* 수직 가운데 정렬을 위해 상속된 라인 높이 설정 */
@@ -201,12 +201,12 @@
   border: 3px solid #9C93FF;
 } */
 
-.PostTitle{
+.Writing .PostTitle{
   box-sizing: border-box;
   padding: 20px 0 0 50px;
 }
 
-h1{
+.Writing h1{
   color: #666;
   font-family: Pretendard;
   font-size: 20px;
@@ -217,12 +217,12 @@ h1{
   margin: 80px 0 20px 0;
 }
 
-.TemplatePost{
+.Writing .TemplatePost{
   height: 270px;
 
 }
 
-.TemplatePostEtc{
+.Writing .TemplatePostEtc{
   height: 540px;
 }
 
@@ -239,7 +239,7 @@ h1{
   margin: 50px;
 }
 
-.BookTitle{
+.Writing .BookTitle{
   margin: 50px 0 23px 57px;
   color: #333;
   font-size: 40px;
@@ -248,7 +248,7 @@ h1{
   line-height: normal;
 }
 
-.BookDetailContainer{
+.Writing .BookDetailContainer{
   display: flex;
   flex-direction: row;
 }
@@ -355,11 +355,11 @@ h1{
 
 }
 
-.PostTitleContainer {
+.Writing .PostTitleContainer {
   position: relative;
 }
 
-.PostTitle {
+.Writing .PostTitle {
   width: 100%;
   margin-top: 64px;
   padding: 20px 70px 20px 50px;

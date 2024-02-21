@@ -80,7 +80,6 @@ const Writing = () => {
 
   const handleRegistration = async () => {
     if (access_token) {
-      // 엑세스 토큰을 포함한 헤더 설정
       const headers = {
         'Authorization': `Bearer ${access_token}`
       };

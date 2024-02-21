@@ -7,6 +7,7 @@ import DeleteIcon from '../../img/deleteIcon.svg';
 import Profile from 'components/Profile/Profile';
 
 const WritingDetail = () => {
+    
   return (
     <div className='WritingDetail'>
         <Header />
