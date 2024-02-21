@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React, {useState,useEffect} from 'react';
 import Slider from "react-slick"
+import axios from 'axios';
 
 
 import Header from 'components/Header/Header';
@@ -21,6 +22,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
 
+  const [posts, setPosts] = useState([]);
+  const [reviews, setReviews] = useState([]);
+
+//swiper 화살표
   const SampleNextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
@@ -53,6 +58,35 @@ const Home = () => {
     speed: 500,
   };
 
+  //데이터 통신
+  useEffect(() => {
+    // posts 데이터 가져오기
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('https://api.bookitlist.store/posts');
+        setPosts(response.data.postList);
+        console.log('포스트 데이터 가져오기 성공');
+      } catch (error) {
+        console.error('포스트 데이터 가져오기 실패', error);
+      }
+    };
+
+    // reviews/all 데이터 가져오기
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get('https://api.bookitlist.store/reviews/all');
+        setReviews(response.data.reviewList);
+        console.log('리뷰 데이터 가져오기 성공');
+      } catch (error) {
+        console.error('리뷰 데이터 가져오기 실패', error);
+      }
+    };
+
+    // 데이터 가져오기
+    fetchPosts();
+    fetchReviews();
+  }, []);
+
   return (
     <div className='Home'>
       <Header />
@@ -81,11 +115,11 @@ const Home = () => {
         <h1 className='title'>좋아요를 가장 많이 받은 글들을 확인하세요</h1>
         
         <div className='BestPost'>
-          <Carousel customClass="post" componentName={"인기 포스트"}/>
+          <Carousel customClass="post" componentName={"인기 포스트"} data={posts} />
         </div>
 
         <div className='BestReview'>
-            <Carousel customClass="oneLineReview" componentName={"인기 한 줄 요약"} />
+            <Carousel customClass="oneLineReview" componentName={"인기 한 줄 요약"} data={reviews}/>
         </div>
 
       </div>
@@ -93,10 +127,10 @@ const Home = () => {
       <div className='RecentContainer'>
         <h1 className='title'>실시간으로 올라오는 기록들, 보러갈래요?</h1>
         <div className='RecentPost'>
-        <Carousel customClass="post" componentName={"최신 포스트"}/>
+        <Carousel customClass="post" componentName={"최신 포스트"} data={posts} />
         </div>
         <div className='RecentReview'>
-        <Carousel customClass="oneLineReview" componentName={"최신 한 줄 요약"} />
+        <Carousel customClass="oneLineReview" componentName={"최신 한 줄 요약"} data={reviews} />
         </div>
       </div>
 

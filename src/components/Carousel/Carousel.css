@@ -1,41 +1,38 @@
 .Carousel .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .Carousel .swiper {
-    width: 100%;
-    height: 125px;
-    margin: 20px auto;
-  }
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.Carousel .swiper {
+  width: 100%;
+  height: 125px;
+  margin: 20px auto;
+}
 
-  .Carousel .swiper-slide {
-    width: 318px;
-    height: 124px;
-    flex-shrink: 0;
-    border-radius: 30px;
-    border: 1.223px solid #C3C3C3;
-    background: #FFF;
-  }
-  
-  .Carousel .oneLineReview{
-    height: 126px;
-    padding-right: 10px;
-    padding-bottom: 50px;
+.Carousel .swiper-slide {
+  width: 318px;
+  height: 124px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  border: 1.223px solid #c3c3c3;
+  background: #fff;
+}
 
-  }
-  .Carousel .post{
-    height: 298px;
-  }
-  .Carousel .post .swiper-slide{
-    height: 280px;
-    
-  }
+.Carousel .oneLineReview {
+  height: 126px;
+  padding-right: 10px;
+  padding-bottom: 50px;
+}
+.Carousel .post {
+  height: 298px;
+}
+.Carousel .post .swiper-slide {
+  height: 280px;
+}
 
 .Carousel .componentName {
   top: 60px;
@@ -45,17 +42,18 @@
   width: 300px;
 }
 
-.Carousel .swiper-wrapper{
+.Carousel .swiper-wrapper {
   margin-top: 50px;
 }
 
-
-.Carousel .swiper-button-next::after, .Carousel .swiper-button-prev::after {
+.Carousel .swiper-button-next::after,
+.Carousel .swiper-button-prev::after {
   font-size: 20px;
   color: #000;
 }
 
-.Carousel .swiper-button-next, .Carousel .swiper-button-prev {
+.Carousel .swiper-button-next,
+.Carousel .swiper-button-prev {
   background: transparent;
   top: 30px;
   width: auto;
@@ -73,8 +71,8 @@
   right: 35px;
 }
 
-.Carousel .swiper-button-next::after, .Carousel .swiper-button-prev::after{
-
+.Carousel .swiper-button-next::after,
+.Carousel .swiper-button-prev::after {
   background: transparent;
   width: auto;
   height: auto;
@@ -85,5 +83,11 @@
   justify-content: center;
   border-radius: 50%;
   z-index: 100;
+}
 
+.slidecss {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }

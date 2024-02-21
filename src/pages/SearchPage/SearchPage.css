@@ -24,7 +24,7 @@
 }
 
 .SearchPage .BookImg {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 180px;
   height: 272px;
   position: absolute;
@@ -35,7 +35,7 @@
 }
 
 .BookDescription {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   color: black;
   position: relative;
   width: 100%;

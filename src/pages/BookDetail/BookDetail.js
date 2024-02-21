@@ -1,10 +1,45 @@
-import React from "react";
+import React, {useState,useEffect} from 'react';
+import axios from "axios";
+
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import './BookDetail.css';
 import Carousel from "components/Carousel/Carousel";
 
 const BookDetail= () => {
+
+    const [posts, setPosts] = useState([]);
+    const [reviews, setReviews] = useState([]);
+
+      //데이터 통신
+  useEffect(() => {
+    // posts 데이터 가져오기
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('https://api.bookitlist.store/posts');
+        setPosts(response.data.postList);
+        console.log('포스트 데이터 가져오기 성공');
+      } catch (error) {
+        console.error('포스트 데이터 가져오기 실패', error);
+      }
+    };
+
+    // reviews/all 데이터 가져오기
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get('https://api.bookitlist.store/reviews/all');
+        setReviews(response.data.reviewList);
+        console.log('리뷰 데이터 가져오기 성공');
+      } catch (error) {
+        console.error('리뷰 데이터 가져오기 실패', error);
+      }
+    };
+
+    // 데이터 가져오기
+    fetchPosts();
+    fetchReviews();
+  }, []);
+
     return(
     <div className='BookDetail'>
         <Header />
@@ -33,10 +68,10 @@ const BookDetail= () => {
         <div className="reviewContainer">
             <h3>리뷰</h3>
             <div className="oneLineReviewContainer">
-                <Carousel customClass="oneLineReview" componentName={"한 줄 요약"} />
+                <Carousel customClass="oneLineReview" componentName={"한 줄 요약"} data={reviews} />
             </div>
             <div className="postContainer">
-                <Carousel customClass="post" componentName={"포스트"}/>
+                <Carousel customClass="post" componentName={"포스트"} data={posts}/>
             </div>
 
         </div>

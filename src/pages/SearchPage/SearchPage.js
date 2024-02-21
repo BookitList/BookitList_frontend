@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import { useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './SearchPage.css';
 import Header from 'components/Header/Header';
@@ -7,67 +8,79 @@ import Footer from 'components/Footer/Footer';
 import heartGaryIcons from 'img/heartGrayIcon.svg';
 
 const SearchPage = () => {
-//   const[query,setQuery] = useState('채식주의자'); //검색어 변수
-//   const[page,setPage] = useState(1); //페이징 변수
-//   const[last,setLast] = useState(1);
+  const [searchTerm,setSearchTerm] = useState([]);
+  const[start,setStart] = useState(1); //페이징 변수
+  const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-//   const [documents,setDocuments] = useState(null);
+    const handleSearch = async (searchTerm) => {
+      try {
+        const response = await axios.get("https://api.bookitlist.store/books/search", {
+          params: {
+            keyword: searchTerm,
+            start: start,
+            "max-results": 300
+          }
+        });
 
-//   const callAPI = async() =>{
-//     const url = `https://api.bookitlist.store/books/search?target=title&isbn=${isbn}`;
-//     const config = {
-//       headers:'Authorization: KakaoAK dc8d40f2136deeecad5055925f2695db', //JWT Token 'APIKEY'
-//       params:{query:query,size:5,page:page}
-//   }; 
-//     const result = await axios(url,config);
-//     setDocuments(result.data.documents);
-//     const total = result.data.meta.pageable_count;
-//     setLast(Math.ceil(total/10));
-//   }
+        console.log(response);
+        
+        setSearchResults(response.data.bookApiList.map(book => ({
+          title: book.title,
+          author: book.author,
+          cover: book.cover,
+          isBook: book.isBook,
+          isbn13: book.isbn13,
+          description: book.description,
+          pubDate: book.pubDate,
+          publisher: book.publisher,
+          isbook: book.isbook,
+        })));
+        
+        console.log("성공");
 
-//   useEffect(()=>{
-//     callAPI();
-//   },[page])
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    useEffect(() =>{
+      const searchTerm = location.state?.searchTerm || '';
+      console.log(searchTerm);
+      handleSearch(searchTerm);
+    },[location]);    
 
-//   const onSubmit  =(e) => {
-//     e.preventDefault();
-//     callAPI();
-//     setPage(1);
-// }
-
-// if(documents===null){
-//     return <h1>로딩중........</h1>
-// }
 
   return (
     <div className='SearchPage'>
-        <Header />
+        <Header onSearch={handleSearch} />
         <div className='SearchPageContainer'>
 
-          {/* {documents.map(d=>( */}
-            <div className='BookContainer'>
+          {searchResults.map((book, index)=>(
+            <div key={index} className='BookContainer'>
               <div className='BookImg'
               style={{
-              backgroundImage: 'heartGrayIcons', // cover 상태를 배경 이미지로 설정
+              backgroundImage: `url(${book.cover})`, // cover 상태를 배경 이미지로 설정
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',}}>
-                {/* <img src={d.thumbnail ? d.thumbnail:'http://via.placeholder.com/180X260'} alt="" /> */}
+                {/* <img className={`BookCover ${!book.isBook? 'IsBookFalse' : ''}`} src={book.cover}  alt='BookCover' /> */}
               </div>
               
               <div className='BookDescription'>
                 <div className='BookTitle'>
-                  {/* `${title}` */} 책 제목
+                  {book.title}
                   </div>
                 <img className='heart' src={heartGaryIcons} alt='Heart'></img>
                 
                 <div className='BookDetail'>
                   <h6>저자</h6>
-                    {/* `${author}` */}
+                    {book.author}
                   <h6>출판사</h6>
-                    {/* `${publisher}` */}
+                    {book.publisher}
                   <h6>출판일</h6>
-                    {/* `${pubDate}` */}
+                    {book.pubDate}
                   <h6 style={{display:'inline'}}>포스트 | </h6>
                     {/* `(${numPost})`개 */}
                   <h6 style={{display:'inline'}}>한줄요약 | </h6>
@@ -75,7 +88,7 @@ const SearchPage = () => {
                 </div>
                 <div className='BookIntro'>
                   <h6>책 소개</h6>
-                    {/* `${description}` */}
+                    {book.description}
                 </div>
 
                 <div className='oneLineContainer'>
@@ -83,10 +96,8 @@ const SearchPage = () => {
                   <h6> - 코코벤 기록가 </h6>
                 </div>
               </div>
-
             </div>
-          )
-          {/* )} */}
+            ))}
           <div>
             {/* <button onClick={()=>setPage(page-1)} disabled={page===1}>이전</button>
             <span style={{margin:'10px'}}>{page}/{last}</span>
