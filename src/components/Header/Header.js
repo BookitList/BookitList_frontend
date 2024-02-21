@@ -31,17 +31,19 @@ const gotoLoginPage = () => {
 
 //로그아웃 처리
 const handleLogoutButtonClick= async () => {
-    localStorage.removeItem('access_token');
-    setAccessToken('');
     
-    // try{
-    //     await axios.post('서버의 로그아웃 엔트포인트',{
+    try{
+        await axios.post('https://api.bookitlist.store/logout',{
+            access_token: access_token,
+        });
+        
+        localStorage.removeItem('access_token');
+        setAccessToken('');
+        console.log('서버에 로그아웃 요청 전송 성공');
 
-    //     });
-    //     console.log('서버에 로그아웃 요청 전송 성공');
-    // } catch (error){
-    //     console.log(error);
-    // }
+    } catch (error){
+        console.log(error);
+    }
 };
 
 const LoginButton = () => (
