@@ -1,65 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import './Header.css';
 import InputSearchIcon from 'img/InputSearchIcon.svg';
 import Logo from 'img/Logo.svg';
 
-const Header = () => {
+const Header = ({onSearch}) => {
     const navigate = useNavigate();
-    const access_token = localStorage.getItem('access_token');
-    // const[keyword,setKeyword] = useState('채식주의자'); //검색어 변수
-    // const[start,setStart] = useState(1); //페이징 변수
-    // const[last,setLast] = useState(1); 마지막 페이지 변수 = max-result/10
-  
-//     const [documents,setDocuments] = useState(null);
-  
-//     const callAPI = async() =>{
-//       const url = `https://api.bookitlist.store/books/search?isbn13=${isbn}`;
-//       const config = {
-//         headers:'Authorization: KakaoAK dc8d40f2136deeecad5055925f2695db', //JWT Token 'APIKEY'
-//         params:{query:query,size:5,page:page}
-//     }; 
-//       const result = await axios(url,config);
-//       setDocuments(result.data.documents);
-//       const total = result.data.meta.pageable_count;
-//       setLast(Math.ceil(total/10));
-//     }
-  
-//     useEffect(()=>{
-//       callAPI();
-//     },[page])
-  
-//     const onSubmit  =(e) => {
-//       e.preventDefault();
-//       callAPI();
-//       setPage(1);
-//   }
-  
-//   if(documents===null){
-//       return <h1>로딩중........</h1>
-//   }
+    const [access_token,setAccessToken] = useState(localStorage.getItem('access_token'));
+    const [searchTerm, setSearchTerm] = useState('');
 
+  const handleSearch = () => {
+    // 페이지 이동
+    navigate('/searchPage',{state:{searchTerm}});
+    console.log(searchTerm);
+  }
+
+
+  const handleKeyPress = (e) => {
+    // 엔터 키가 눌렸을 때 검색 수행
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
 const gotoLoginPage = () => {
     navigate('/Login');
 };
 
+//로그아웃 처리
+const handleLogoutButtonClick= async () => {
+    localStorage.removeItem('access_token');
+    setAccessToken('');
+    
+    // try{
+    //     await axios.post('서버의 로그아웃 엔트포인트',{
+
+    //     });
+    //     console.log('서버에 로그아웃 요청 전송 성공');
+    // } catch (error){
+    //     console.log(error);
+    // }
+};
+
 const LoginButton = () => (
-    <button
-    className='LoginButton'
-    onClick={gotoLoginPage}
-    style={{
-        backgroundColor: access_token ? 'white' : '#0b0087' ,
-        color: access_token ? '#666666' : 'white',
-        border: '1px solid #EBEBEB'
-    }}
-    >
-      {access_token ? '로그아웃' : '로그인'}
-    </button>
+    access_token?(
+        <button
+            className='LogoutButton'
+            onClick={handleLogoutButtonClick}
+            style={{
+                backgroundColor: 'white',
+                color: '#666666',
+                border: '1px solid #EBEBEB'
+            }}
+        >
+        로그아웃
+        </button>
+    ) : (
+        <button
+            className='LoginButton'
+            onClick={gotoLoginPage}
+            style={{
+                backgroundColor: '#0b0087' ,
+                color: 'white',
+                border: '1px solid #EBEBEB'
+            }}
+        >
+            로그인
+        </button>
+    )
   );
   
   console.log(access_token);
+
+  // access_token이 변경될 때 localStorage에 저장
+  useEffect(() => {
+    localStorage.setItem('access_token', access_token);
+  },[access_token]);
 
 return (
     <header className='HeaderContainer'>
@@ -89,8 +107,13 @@ return (
 
         <div className='HeaderRight'>
             <img className='InputSearchIcon' src={InputSearchIcon} alt='SearchIcon'/>
-            <input className='SearchBar' type = 'text' placeholder='책이름을 검색하세요' required={true}
-            // value={keyword} onChange={(e)=>setKeyword(e.target.value)}
+            <input className='SearchBar' type = 'text'
+            required={true}
+            value={searchTerm}
+            onChange={(e)=> setSearchTerm(e.target.value)}
+            onKeyPress={handleKeyPress}
+            // onKeyPress={handleQuerySearch}
+            // bookData={searchResults}
             />
             <LoginButton  />    
         </div>

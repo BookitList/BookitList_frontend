@@ -1,26 +1,20 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import axios from 'axios';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './Carousel.css';
-import { Navigation } from 'swiper/modules';
 
+const Carousel = ({ customClass, componentName, data }) => {
 
-
-
-  const Carousel = ({ customClass, componentName }) => {
-
-    const posts = [
-      { title: "게시글 1", content: "게시글 1의 내용입니다.", author: "작성자1" },
-      { title: "게시글 2", content: "게시글 2의 내용입니다.", author: "작성자2" },
-      { title: "게시글 3", content: "게시글 3의 내용입니다.", author: "작성자3" },
-      { title: "게시글 4", content: "게시글 4의 내용입니다.", author: "작성자4" },
-      { title: "게시글 5", content: "게시글 5의 내용입니다.", author: "작성자5" },
-    ];
+  const navigate=useNavigate();
     
-    return (
-      <div className='Carousel'>
-        <h1 className='componentName'>{componentName}</h1>
+  return (
+    <div className='Carousel'>
+      <h1 className='componentName'>{componentName}</h1>
       <Swiper
         slidesPerView={3}
         centeredSlides={false}
@@ -33,11 +27,32 @@ import { Navigation } from 'swiper/modules';
         className={`Swiper ${customClass}`}
       >
 
-        {posts.map((post, index) => (
-        <SwiperSlide key={index}>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-          <footer>작성자: {post.author}</footer>
+        {data.map((item, index) => (
+          // onClick={()=>navigate(`/글상세/${item.글ID}`)}
+        <SwiperSlide key={index} className='slidecss'>
+          <h3 style={{ marginBottom: '10px' }}>{item.title}</h3>
+
+          {Array.isArray(item.content) ? (
+            <>
+              {item.content.map((content, i) => (
+                <div key={i} style={{ marginBottom: '10px' }}>
+                  <p>
+                    {content.length >= 150 ? `${content.slice(0, 150)}...` : content}
+                  </p>
+                  {content.length >= 150 && <span>더보기</span>}
+                </div>
+              ))}
+            </>
+          ) : (
+            <div style={{ marginBottom: '10px' }}>
+              <p>
+                {item.content.length >= 150 ? `${item.content.slice(0, 150)}...` : item.content}
+              </p>
+              {item.content.length >= 150 && <span>더보기</span>}
+            </div>
+          )}
+          
+          <footer>작성자: {item.author}</footer>
         </SwiperSlide>
       ))}
 
@@ -46,10 +61,7 @@ import { Navigation } from 'swiper/modules';
 
       <div className="swiper-button-next"></div>
     </Swiper>
-    </div>
-    
-    
-
+  </div>
   );
 };
 

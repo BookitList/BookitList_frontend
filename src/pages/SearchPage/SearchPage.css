@@ -10,7 +10,7 @@
   margin-bottom: 30px;
 }
 
-.sBookContainer {
+.SearchPage .BookContainer {
   width: 1092px;
   height: 350px;
   position: relative;
@@ -23,8 +23,8 @@
   justify-content: flex-start;
 }
 
-.sBookImg {
-  border: 1px solid red;
+.SearchPage .BookImg {
+  /* border: 1px solid red; */
   width: 180px;
   height: 272px;
   position: absolute;
@@ -34,8 +34,8 @@
   right: 870px; */
 }
 
-.sBookDescription {
-  border: 1px solid black;
+.BookDescription {
+  /* border: 1px solid black; */
   color: black;
   position: relative;
   width: 100%;
@@ -49,12 +49,12 @@
   top: 0;
 }
 
-.sBookDetail h6 {
+.BookDetail h6 {
   color: black;
   margin: 0 auto;
 }
 
-.sBookIntro h6 {
+.BookIntro h6 {
   position: absolute;
   right: 50%;
   top: 100px;
