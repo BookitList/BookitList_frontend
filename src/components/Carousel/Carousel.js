@@ -7,11 +7,10 @@ import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './Carousel.css';
-import Profile from 'components/Profile/Profile';
 
 const Carousel = ({ customClass, componentName, data }) => {
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const nameData = [
     {id: 1, name: '채다희'},
@@ -25,6 +24,26 @@ const Carousel = ({ customClass, componentName, data }) => {
     {id: 9, name: '코테이토'}
   ]
     
+
+  // const handleCardClick = (bookId) => {
+  //   navigate(`/WritingDetail/${bookId}`);
+  // };
+  const handleCardClick = (bookId, postId, reviewId, customClass) => {
+    if (customClass === 'post') {
+      // postId 처리
+      console.log('postId:', postId);
+      navigate(`/WritingDetail/?postId=${postId}&bookId=${bookId}`);
+    } else if (customClass === 'oneLineReview') {
+      // reviewId 처리
+      console.log('reviewId:', reviewId);
+      console.log('bookId:', bookId);
+      navigate(`/WritingDetail/?reviewId=${reviewId}&bookId=${bookId}`);
+    } else {
+      // 다른 처리
+      console.error("존재하지 않는 정보입니다.");
+    }
+  };
+
   return (
     <div className='Carousel'>
       <h1 className='componentName'>{componentName}</h1>
@@ -39,10 +58,9 @@ const Carousel = ({ customClass, componentName, data }) => {
         modules={[Navigation]}
         className={`Swiper ${customClass}`}
       >
-
         {data.map((item, index) => (
           // onClick={()=>navigate(`/글상세/${item.글ID}`)}
-        <SwiperSlide key={index} className='slidecss'>
+          <SwiperSlide key={index} className='slidecss' onClick={() => handleCardClick(item.bookId, item.postId, item.reviewId, customClass)}>
           {nameData.map((author) => {
             if (author.id === item.memberId) {
               return <p key={author.id} style={{ marginBottom: '-10px' }}>작성자 : {author.name}</p>;
@@ -73,15 +91,18 @@ const Carousel = ({ customClass, componentName, data }) => {
  
         </SwiperSlide>
       ))}
+    
 
 
       <div className="swiper-button-prev"></div>
-
       <div className="swiper-button-next"></div>
-    </Swiper>
-  </div>
-  );
-};
 
+      </Swiper>
+      </div>
+      
+      
+  );
+  
+};
 
 export default Carousel;

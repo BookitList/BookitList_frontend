@@ -1,23 +1,23 @@
-.ReviewContainer{
-    width: 434px;
+.ReviewContainer {
+    /* width: 434px; */ 
     height: 154px;
     display: flex;
     flex-direction: row;
     border-radius: 20px;
     margin-top: 21px;
-    border-radius: 15px;
     background: var(--naver-text, #FFF);
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
     overflow: hidden;
-    
-}
-
-.MyReviewContainer{
-    width: 100%;
-}
-
-
-.MyRecord .ReviewImage{
+    padding: 0 16px 0 0;
+  }
+  
+  .ReviewBox {
+    display: flex;
+    flex-wrap: wrap; /* 2열로 나뉘도록 설정 */
+    justify-content: space-between; /* 요소들 사이의 간격을 동일하게 설정 */
+  }
+  
+  .MyRecord .ReviewImage{
     width: 100px;
     height: 151px; 
     overflow: hidden; 
@@ -26,73 +26,70 @@
     border-radius: 9.359px;
     box-shadow: 0px 0px 5.615px 0px rgba(0, 0, 0, 0.25);
 }
-
-.MyRecord .ReviewTitle{
+  
+  .MyRecord .ReviewTitle {
     margin: 16px 0 0 0;
     font-size: 20px;
-}
-
-.MyRecord .ReviewAuthor{
+  }
+  
+  .MyRecord .ReviewAuthor {
     margin: 2px 0 0 0;
     overflow: hidden;
-color: #999;
-
-text-overflow: ellipsis;
-font-family: Pretendard;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-line-height: 20px; /* 142.857% */
-letter-spacing: -0.28px;
-}
-
-.MyRecord .ReviewContent{
+    color: #999;
+    text-overflow: ellipsis;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+  }
+  
+  .MyRecord .ReviewContent {
     width: 290px;
     height: 62px;
     border-radius: 10px;
-    background: #F8F8F8;
+    background: #f8f8f8;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.10);
     padding: 10px 11px;
     box-sizing: border-box;
-    color: #3C3C3C;
+    color: #3c3c3c;
     font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-
-}
-
-.MyRecord .PostContainer{
+  }
+  
+  .MyRecord .PostContainer {
     width: 434px;
     height: 328px;
     border-radius: 15px;
-    background: var(--naver-text, #FFF);
+    background: var(--naver-text, #fff);
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
     margin-top: 12px;
-}
-
-.PostHeader{
+  }
+  
+  .PostHeader {
     display: flex;
     flex-direction: row;
     padding: 1px;
-}
-
-.MyRecord .PostImage{
+  }
+  
+  .MyRecord .PostImage {
     width: 100px;
     height: 151px;
     border-radius: 9.359px;
     box-shadow: 0px 0px 5.615px 0px rgba(0, 0, 0, 0.25);
     background-color: #999;
     margin: 16px 0 0 30px;
-
-}
-
-.MyRecord .PostText{
+  }
+  
+  .MyRecord .PostText {
     margin: 16px 0 0 20px;
-}
-
-.MyRecord .PostBookTitle{
+  }
+  
+  .MyRecord .PostBookTitle {
     overflow: hidden;
     color: #333;
     text-overflow: ellipsis;
@@ -103,10 +100,9 @@ letter-spacing: -0.28px;
     line-height: normal;
     white-space: nowrap;
     width: 190px;
-    
-}
-
-.MyRecord .PostAuthor{
+  }
+  
+  .MyRecord .PostAuthor {
     overflow: hidden;
     color: #999;
     text-overflow: ellipsis;
@@ -114,58 +110,52 @@ letter-spacing: -0.28px;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 20px; /* 142.857% */
+    line-height: 20px;
     letter-spacing: -0.28px;
     white-space: nowrap;
     width: 162px;
-    
-}
-
-.MyRecord .PostTitle{
+  }
+  
+  .MyRecord .PostTitle {
     overflow: hidden;
-    color: #3C3C3C;
+    color: #3c3c3c;
     text-overflow: ellipsis;
     font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
-    line-height: 28.953px; /* 160.849% */
+    line-height: 28.953px;
     letter-spacing: -0.36px;
     margin: 0;
     white-space: nowrap;
-}
-
-.MyRecord .PostContentBox{
+  }
+  
+  .MyRecord .PostContentBox {
     width: 403px;
     height: 211px;
     border-radius: 10px;
-    background: #F8F8F8;
+    background: #f8f8f8;
     top: -80px;
     left: 16px;
     position: relative;
     padding: 10px;
     box-sizing: border-box;
-}
-
-.MyRecord .PostContent{
+  }
+  
+  .MyRecord .PostContent {
     overflow: hidden;
-    color: #3C3C3C;
+    color: #3c3c3c;
     text-overflow: ellipsis;
     font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 21px */
+    line-height: 150%;
     letter-spacing: -0.28px;
     margin: 8.05px 0 0 0;
-    /* height: 126px; */
     white-space: pre-line;
     display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-    
-
-}
-
-
-
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+  
