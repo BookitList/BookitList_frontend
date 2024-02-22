@@ -35,6 +35,12 @@ Information {
   
 }
 
+.FooterLogo{
+  width: 92px;
+  height: 15.462px;
+
+}
+
 .TeamMember{
   display: flex;
   flex-direction: row;
