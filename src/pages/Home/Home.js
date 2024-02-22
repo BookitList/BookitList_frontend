@@ -1,4 +1,6 @@
 import React, {useState,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Slider from "react-slick"
 import axios from 'axios';
 
@@ -13,6 +15,8 @@ import BannerImg01 from 'img/bannerImg01.svg';
 import BannerImg02 from 'img/bannerImg02.svg';
 import BannerImg03 from 'img/bannerImg03.svg';
 import ProfileEX from 'img/profileEX.svg';
+import ProfileEX2 from 'img/profileEX2.svg';
+import ProfileEX3 from 'img/profileEX3.svg';
 import RecordCard from 'img/recordCard.svg';
 
 //slick styles
@@ -21,7 +25,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 const Home = () => {
-
+  
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [reviews, setReviews] = useState([]);
 
@@ -65,7 +70,7 @@ const Home = () => {
       try {
         const response = await axios.get('https://api.bookitlist.store/posts');
         setPosts(response.data.postList);
-        console.log('포스트 데이터 가져오기 성공');
+        // console.log('포스트 데이터 가져오기 성공');
       } catch (error) {
         console.error('포스트 데이터 가져오기 실패', error);
       }
@@ -76,7 +81,7 @@ const Home = () => {
       try {
         const response = await axios.get('https://api.bookitlist.store/reviews/all');
         setReviews(response.data.reviewList);
-        console.log('리뷰 데이터 가져오기 성공');
+        // console.log('리뷰 데이터 가져오기 성공');
       } catch (error) {
         console.error('리뷰 데이터 가져오기 실패', error);
       }
@@ -86,6 +91,10 @@ const Home = () => {
     fetchPosts();
     fetchReviews();
   }, []);
+
+  const gotoMypage=() => {
+    navigate('/MyPage');
+  }
 
   return (
     <div className='Home'>
@@ -136,11 +145,12 @@ const Home = () => {
 
       <div className='RecommendUser'>
         <h1 className='title'>매주 새로운 기록가를 만나보세요</h1>
-        <div className='WeekUser'>
+        <div className='WeekUser' onClick={gotoMypage}>
           <img className='RecommendUserImg' src={ProfileEX} alt='profileex'/>
-          <img className='RecommendUserImg' src={ProfileEX} alt='profileex'/>
-          <img className='RecommendUserImg' src={ProfileEX} alt='profileex'/>
+          <img className='RecommendUserImg' src={ProfileEX2} alt='profileex'/>
+          <img className='RecommendUserImg' src={ProfileEX3} alt='profileex'/>
         </div>
+        
       </div>
 
       <div className='HomeInner'>

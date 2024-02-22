@@ -5,6 +5,7 @@
 
 .SearchPageContainer {
   width: 100%;
+  min-height: 100vh;
   margin: 0 15vw;
   margin-top: 67px;
   margin-bottom: 30px;

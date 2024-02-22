@@ -47,6 +47,7 @@ const handleLogoutButtonClick= async () => {
         setAccessToken(null);
         setRefreshToken(null);
         console.log('서버에 로그아웃 요청 전송 성공');
+        window.location.href();
 
     } catch (error){
         console.log(error);

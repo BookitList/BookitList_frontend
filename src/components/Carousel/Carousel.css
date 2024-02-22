@@ -1,10 +1,10 @@
 .Carousel .swiper-slide {
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   background: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .Carousel .swiper {
@@ -20,6 +20,10 @@
   border-radius: 30px;
   border: 1.223px solid #c3c3c3;
   background: #fff;
+}
+
+.authortext {
+  text-align: left;
 }
 
 .Carousel .oneLineReview {
