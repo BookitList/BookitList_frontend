@@ -37,6 +37,7 @@
   flex-grow: 1;
   flex-basis: 0;
   font-weight: 700;
+  margin: 10px;
 }
 
 .SearchBar {

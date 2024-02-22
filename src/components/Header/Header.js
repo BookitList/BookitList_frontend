@@ -35,14 +35,19 @@ const handleLogoutButtonClick= async () => {
     
     try{
         await axios.post('https://api.bookitlist.store/logout',{
-            access_token: access_token,
-            refresh_token: refresh_token,
-        });
+            accessToken: access_token,
+            refreshToken: refresh_token,
+        },{
+            headers: {
+                Authorization : `Bearer ${access_token}`
+        }});
         
         localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
         setAccessToken(null);
         setRefreshToken(null);
         console.log('서버에 로그아웃 요청 전송 성공');
+        window.location.href();
 
     } catch (error){
         console.log(error);
@@ -50,7 +55,7 @@ const handleLogoutButtonClick= async () => {
 };
 
 const LoginButton = () => (
-    access_token === null ?(
+    access_token == null || access_token=='null'?(
         <button
             className='LoginButton'
             onClick={gotoLoginPage}
