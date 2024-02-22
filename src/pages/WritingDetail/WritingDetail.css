@@ -56,7 +56,7 @@
 
     .WritingDetail .EditButton{
         position: relative;
-        left: 781px;
+        left: 788px;
         width: 24px;
         height: 24px;
         bottom: 504px;
@@ -76,12 +76,13 @@
 }
 
 .WritingDetailContainer .BookImage{
-    width: 270px;
+    /* width: 270px; */
+    max-width: 800px;
     height: 408px;
     border-radius: 20px;
     box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.35);
     margin-top: 18px;
-    margin: 18px 309px 0 309px;
+    /* margin: 18px 16vw 0 16vw; */
     box-sizing: border-box;
     /* display: flex;
     justify-content: center; */
@@ -89,6 +90,10 @@
     position: relative;
 }
 
+.WritingDetail .BookDiv{
+    display: flex;
+    justify-content: center;
+}
 
 .WritingDetail .BookTitle {
     top: -532px;
@@ -134,8 +139,6 @@
 .WritingDetail .ReviewContent{
     display: flex;
     flex-direction: row;
-    top: -470px;
-    width: 888px;
     text-align: center;
     position: relative;
     justify-content: center;
@@ -161,5 +164,20 @@
     line-height: normal;
     margin: 0;
 }
+
+.Date{
+    margin: 7px 0 0 0;
+    position: relative;
+}
   
+.WritingDetail .ReviewConatiner{
+    display: flex;
+    flex-direction: column;
+    top: -479px;
+    width: 888px;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+
+}
 

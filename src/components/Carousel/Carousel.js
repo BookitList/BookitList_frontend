@@ -11,8 +11,23 @@ import './Carousel.css';
 const Carousel = ({ customClass, componentName, data }) => {
   const navigate = useNavigate();
 
-  const handleCardClick = (bookId) => {
-    navigate(`/WritingDetail/${bookId}`);
+  // const handleCardClick = (bookId) => {
+  //   navigate(`/WritingDetail/${bookId}`);
+  // };
+  const handleCardClick = (bookId, postId, reviewId, customClass) => {
+    if (customClass === 'post') {
+      // postId 처리
+      console.log('postId:', postId);
+      // navigate(`/WritingDetail/${postId}`);
+    } else if (customClass === 'oneLineReview') {
+      // reviewId 처리
+      console.log('reviewId:', reviewId);
+      console.log('bookId:', bookId);
+      navigate(`/WritingDetail/?reviewId=${reviewId}&bookId=${bookId}`);
+    } else {
+      // 다른 처리
+      console.error("존재하지 않는 정보입니다.");
+    }
   };
 
   return (
@@ -30,7 +45,7 @@ const Carousel = ({ customClass, componentName, data }) => {
         className={`Swiper ${customClass}`}
       >
         {data.map((item, index) => (
-          <SwiperSlide key={index} className='slidecss' onClick={() => handleCardClick(item.bookId)}>
+          <SwiperSlide key={index} className='slidecss' onClick={() => handleCardClick(item.bookId, item.postId, item.reviewId, customClass)}>
             <h3 style={{ marginBottom: '10px' }}>{item.title}</h3>
 
             {Array.isArray(item.content) ? (
