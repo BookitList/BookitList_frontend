@@ -14,6 +14,10 @@ const SearchPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleBookDetail = (isbn13) => {
+    navigate(`/BookDetail/${isbn13}`);
+  };
+
     const handleSearch = async (searchTerm) => {
       try {
         const response = await axios.get("https://api.bookitlist.store/books/search", {
@@ -38,7 +42,7 @@ const SearchPage = () => {
           isbook: book.isbook,
         })));
         
-        console.log("성공");
+        console.log("검색성공");
 
       } catch (error) {
         console.error(error);
@@ -58,7 +62,7 @@ const SearchPage = () => {
         <div className='SearchPageContainer'>
 
           {searchResults.map((book, index)=>(
-            <div key={index} className='BookContainer'>
+            <div key={index} className='BookContainer' onClick={()=>handleBookDetail(book.isbn13)}>
               <div className='BookImg'
               style={{
               backgroundImage: `url(${book.cover})`, // cover 상태를 배경 이미지로 설정
