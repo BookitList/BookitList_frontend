@@ -75,7 +75,7 @@
 
 }
 
-.WritingDetailContainer .BookImage{
+.BookImage{
     /* width: 270px; */
     max-width: 800px;
     height: 408px;
@@ -86,13 +86,15 @@
     box-sizing: border-box;
     /* display: flex;
     justify-content: center; */
-    bottom: 519px;
-    position: relative;
+    /* bottom: 519px;
+    position: relative; */
 }
 
 .WritingDetail .BookDiv{
     display: flex;
     justify-content: center;
+    bottom: 519px;
+    position: relative;
 }
 
 .WritingDetail .BookTitle {
@@ -181,3 +183,57 @@
 
 }
 
+
+.WritingDetail .PostDetailContainer{
+    width: 888px;
+    min-height: 640px;
+    max-height: 1020px;
+    margin: 20px 0 155px 0;
+    border-radius: 20px;
+    border: 4px solid rgba(255, 255, 255, 0.50);
+    box-shadow: 0px 0px 12px 0px rgba(25, 26, 43, 0.25);
+    backdrop-filter: blur(10px);
+
+}
+
+.PostDate{
+    color: #666;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    margin: 0;
+}
+
+.PostDetailContainer .PostTitle{
+    color: #333;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; /* 140% */
+    letter-spacing: -0.4px;
+    margin: 8px 0 0 0;
+
+}
+
+.PostDetailContainer .PostContent{
+    margin: 20px 0 0 0;
+    color: #666;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%; /* 25.2px */
+    letter-spacing: -0.28px;
+    
+}
+
+ .PostContentConatiner{
+    bottom: 471px;
+    position: relative;
+    padding: 0 41px 41px 41px;
+
+}

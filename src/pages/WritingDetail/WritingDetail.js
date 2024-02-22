@@ -19,44 +19,15 @@ const WritingDetail = (props) => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const reviewId = params.get('reviewId');
+  const postId = params.get('postId');
   const bookId = params.get('bookId');
-
 
 
   const [reviewData, setReviewData] = useState(null);
   const [bookInfo, setBookInfo] = useState(null);
+  const [postData, setPostData] = useState(null);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchReviewData = async () => {
-  //     try {
-  //       const response = await axios.get(`https://api.bookitlist.store/reviews/${reviewId}`);
-  //       setReviewData(response.data);
-  //     } catch (error) {
-  //       setError(error);
-  //     }
-  //   };
-
-    
-
-  //   const fetchBookInfo = async () => {
-  //     try {
-  //       const response = await axios.get(`https://api.bookitlist.store/books/${bookId}`);
-  //       setBookInfo(response.data);
-  //     } catch (error) {
-  //       setError(error);
-  //     }
-  //   };
-
-    // useEffect(() => {
-    //   const fetchPostData = async () => {
-    //     try {
-    //       const response = await axios.get(`https://api.bookitlist.store/posts/${bookId}`);
-    //       setReviewData(response.data);
-    //     } catch (error) {
-    //       setError(error);
-    //     }
-    //   };
 
 
     useEffect(() => {
@@ -65,37 +36,44 @@ const WritingDetail = (props) => {
           // bookId로 책 정보 가져오기
           const bookInfoResponse = await axios.get(`https://api.bookitlist.store/books/${bookId}`);
           setBookInfo(bookInfoResponse.data);
-  
-          // reviewId로 리뷰 정보 가져오기
+
+          if(reviewId!==null){
+            // reviewId로 리뷰 정보 가져오기
           const reviewResponse = await axios.get(`https://api.bookitlist.store/reviews/${reviewId}`);
           setReviewData(reviewResponse.data);
+
+          }
+
+          if(postId!==null){
+            // postId로 포스트 정보 가져오기
+            const postResponse = await axios.get(`https://api.bookitlist.store/posts/${postId}`);
+            setPostData(postResponse.data);
+          }
+  
+          
+          
         } catch (error) {
           setError(error);
         }
       };
+
+      
   
       fetchData();
-
-
-    // fetchReviewData();
-    // fetchBookInfo();
-
-    // Clean-up function to cancel the request if the component unmounts
-  //   return () => {
-  //     // Cancel the axios request if it's still ongoing
-  //   };
-  // }, [bookId]); // Include bookId in the dependency array
 
   return () => {
     // Cancel the axios request if it's still ongoing
   };
-},[reviewId, bookId]);
+},[reviewId,postId, bookId]);
 
   return (
     <div className='WritingDetail'>
       <Header />
       <div className='Container'>
         <Profile />
+        <div>
+        {reviewId !== null && (
+        
         <div className='WritingDetailContainer'>
           <div className='BookCoverImg'
           style={{
@@ -106,14 +84,10 @@ const WritingDetail = (props) => {
             overflow:'hidden',
             filter: 'brightness(0.4)',
           }}></div>
-            {/* <div className='ButtonContainer'> */}
               <img className='EditButton' src={EditIcon} alt='EditButton' />
               <img className='DeleteButton' src={DeleteIcon} alt='DeleteButton' />
-            {/* </div> */}
-            {/* <div className='ContainerHeader'> */}
             <p className='BookTitle'>{bookInfo && bookInfo.title}</p>
             <p className='BookAuthor'>{bookInfo && bookInfo.author}</p>
-            {/* </div> */}
             <div className='BookDiv'>
             <img className='BookImage' src={bookInfo ? bookInfo.cover : ''} alt='Book Cover' />
             </div>
@@ -125,10 +99,41 @@ const WritingDetail = (props) => {
             </div>
             <p className='Date'>{reviewData && reviewData.createdAt}</p>
             </div>
-            
-            
-          
+ 
         </div>
+        )}
+        {postId !== null && (
+        
+        <div className='PostDetailContainer'>
+          <div className='BookCoverImg'
+          style={{
+            backgroundImage: bookInfo ? `url(${bookInfo.cover})` : '', // cover 상태를 배경 이미지로 설정
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            overflow:'hidden',
+            filter: 'brightness(0.4)',
+          }}></div>
+              <img className='EditButton' src={EditIcon} alt='EditButton' />
+              <img className='DeleteButton' src={DeleteIcon} alt='DeleteButton' />
+            <p className='BookTitle'>{bookInfo && bookInfo.title}</p>
+            <p className='BookAuthor'>{bookInfo && bookInfo.author}</p>
+            <div className='BookDiv'>
+            <img className='BookImage' src={bookInfo ? bookInfo.cover : ''} alt='Book Cover' />
+            </div>
+            <div className='PostContentConatiner'>
+              <p className='PostDate'>{postData && postData.createdAt}</p>
+              <p className='PostTitle'>{postData && postData.title}</p>
+              <p className='PostContent'>{postData && postData.content}</p>
+            </div>
+ 
+        </div>
+        )}
+
+        </div>
+
+
+        
       </div>
       <Footer />
     </div>

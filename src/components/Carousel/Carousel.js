@@ -18,7 +18,7 @@ const Carousel = ({ customClass, componentName, data }) => {
     if (customClass === 'post') {
       // postId 처리
       console.log('postId:', postId);
-      // navigate(`/WritingDetail/${postId}`);
+      navigate(`/WritingDetail/?postId=${postId}&bookId=${bookId}`);
     } else if (customClass === 'oneLineReview') {
       // reviewId 처리
       console.log('reviewId:', reviewId);
