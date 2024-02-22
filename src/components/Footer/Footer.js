@@ -1,7 +1,6 @@
 import React from "react";
 import './Footer.css';
-import FooterLogo from '../../img/Logo.svg';
-import FacebookIcon from '../../img/Facebook.svg';
+import FooterLogo from '../../img/grayLogo.svg';
 import InstagramIcon from '../../img/Instagram.svg';
 import GithubIcon from '../../img/github.svg';
 
@@ -24,7 +23,7 @@ const Footer = () => {
             <div className="FooterContainer">
                 
             <div className="InfoContainer">
-                <img src={FooterLogo} alt="Logo"/>
+                <img className="FooterLogo" src={FooterLogo} alt="Logo"/>
                 <div className="Line"></div>
                 <div className="TeamMember">
                 <p className="Part">

@@ -60,6 +60,10 @@ const BookCarousel = ({ bookData, totalSlides, onBookClick }) => {
           },
         }}
         modules={[Pagination, Navigation]}
+        navigation={{ // navigation 설정
+          nextEl: '.NextArrow', // 다음 버튼 클래스
+          prevEl: '.PrevArrow' // 이전 버튼 클래스
+        }}
       >
         {slides}
       </Swiper>
