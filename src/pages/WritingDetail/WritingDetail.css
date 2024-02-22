@@ -22,13 +22,14 @@
     }
 
     .BookCoverImg{
-        padding: 34px;
-        width: 888px;
+        /* padding: 34px; */
+        /* margin: 34px 43px; */
+        /* width: 888px; */
         height: 540px;
+        /* height: 472px; */
         border-radius: 20px 20px 0px 0px;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.90) 15.79%, rgba(248, 248, 248, 0.20) 61.76%);
         backdrop-filter: blur(10px);
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -55,15 +56,17 @@
 
     .WritingDetail .EditButton{
         position: relative;
-        left: 362px;
+        left: 781px;
         width: 24px;
         height: 24px;
+        bottom: 504px;
 
     }
 
     .WritingDetail .DeleteButton{
         position: relative;
-        left: 384px;
+        left: 804px;
+        bottom: 504px;
         
     }
 
@@ -78,7 +81,85 @@
     border-radius: 20px;
     box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.35);
     margin-top: 18px;
-    /* margin: 18px 309px 0 309px; */
+    margin: 18px 309px 0 309px;
     box-sizing: border-box;
+    /* display: flex;
+    justify-content: center; */
+    bottom: 519px;
+    position: relative;
 }
+
+
+.WritingDetail .BookTitle {
+    top: -532px;
+    left: 131px;
+    width: 628px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+
+    color: var(--naver-text, #FFF);
+
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; /* 140% */
+    letter-spacing: -0.4px;
+    margin: 0;
+  }
+
+  .WritingDetail .BookAuthor{
+    top: -518px;
+    left: 131px;
+    width: 628px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    color: var(--naver-text, #FFF);
+    text-overflow: ellipsis;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+    margin: 0;
+
+}
+.WritingDetail .ReviewContent{
+    display: flex;
+    flex-direction: row;
+    top: -482px;
+    width: 888px;
+    text-align: center;
+    position: relative;
+    justify-content: center;
+
+}
+
+.WritingDetail .Review{
+    width: 638px;
+    color: #333;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.Comma{
+    color: #333;
+    font-family: "Noto Sans KR";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin: 0;
+}
+  
 

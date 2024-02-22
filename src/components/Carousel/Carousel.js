@@ -9,9 +9,12 @@ import 'swiper/css/navigation';
 import './Carousel.css';
 
 const Carousel = ({ customClass, componentName, data }) => {
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
-    
+  const handleCardClick = (bookId) => {
+    navigate(`/WritingDetail/${bookId}`);
+  };
+
   return (
     <div className='Carousel'>
       <h1 className='componentName'>{componentName}</h1>
@@ -26,44 +29,39 @@ const Carousel = ({ customClass, componentName, data }) => {
         modules={[Navigation]}
         className={`Swiper ${customClass}`}
       >
-
         {data.map((item, index) => (
-          // onClick={()=>navigate(`/글상세/${item.글ID}`)}
-        <SwiperSlide key={index} className='slidecss'>
-          <h3 style={{ marginBottom: '10px' }}>{item.title}</h3>
+          <SwiperSlide key={index} className='slidecss' onClick={() => handleCardClick(item.bookId)}>
+            <h3 style={{ marginBottom: '10px' }}>{item.title}</h3>
 
-          {Array.isArray(item.content) ? (
-            <>
-              {item.content.map((content, i) => (
-                <div key={i} style={{ marginBottom: '10px' }}>
-                  <p>
-                    {content.length >= 150 ? `${content.slice(0, 150)}...` : content}
-                  </p>
-                  {content.length >= 150 && <span>더보기</span>}
-                </div>
-              ))}
-            </>
-          ) : (
-            <div style={{ marginBottom: '10px' }}>
-              <p>
-                {item.content.length >= 150 ? `${item.content.slice(0, 150)}...` : item.content}
-              </p>
-              {item.content.length >= 150 && <span>더보기</span>}
-            </div>
-          )}
-          
-          <footer>작성자: {item.author}</footer>
-        </SwiperSlide>
-      ))}
+            {Array.isArray(item.content) ? (
+              <>
+                {item.content.map((content, i) => (
+                  <div key={i} style={{ marginBottom: '10px' }}>
+                    <p>
+                      {content.length >= 150 ? `${content.slice(0, 150)}...` : content}
+                    </p>
+                    {content.length >= 150 && <span>더보기</span>}
+                  </div>
+                ))}
+              </>
+            ) : (
+              <div style={{ marginBottom: '10px' }}>
+                <p>
+                  {item.content.length >= 150 ? `${item.content.slice(0, 150)}...` : item.content}
+                </p>
+                {item.content.length >= 150 && <span>더보기</span>}
+              </div>
+            )}
 
+            <footer>작성자: {item.author}</footer>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       <div className="swiper-button-prev"></div>
-
       <div className="swiper-button-next"></div>
-    </Swiper>
-  </div>
+    </div>
   );
 };
-
 
 export default Carousel;
