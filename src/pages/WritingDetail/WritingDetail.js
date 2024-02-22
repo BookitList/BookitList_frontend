@@ -7,6 +7,8 @@ import DeleteIcon from '../../img/deleteIcon.svg';
 import Profile from 'components/Profile/Profile';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import leftComma from '../../img/leftComma.svg';
+import rightComma from '../../img/rightComma.svg';
 
 const WritingDetail = (props) => {
   const { bookId } = useParams(); // URL의 bookId 파라미터 가져오기
@@ -69,9 +71,9 @@ const WritingDetail = (props) => {
             {/* </div> */}
             <img className='BookImage' src={bookInfo ? bookInfo.cover : ''} alt='Book Cover' />
             <div className='ReviewContent'>
-            <p className='Comma'>"</p>
-            <p className='Reviw'>{reviewData && reviewData.content}</p>
-            <p className='Comma'>"</p>
+            <img src={leftComma} alt='leftComma'/>
+            <p className='Review'>{reviewData && reviewData.content}</p>
+            <img src={rightComma} alt='rightComma'/>
           </div>
             
           

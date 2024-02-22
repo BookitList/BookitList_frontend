@@ -134,7 +134,7 @@
 .WritingDetail .ReviewContent{
     display: flex;
     flex-direction: row;
-    top: -482px;
+    top: -470px;
     width: 888px;
     text-align: center;
     position: relative;
@@ -143,13 +143,13 @@
 }
 
 .WritingDetail .Review{
-    width: 638px;
     color: #333;
     font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    margin: 0 10px;
 }
 
 .Comma{
