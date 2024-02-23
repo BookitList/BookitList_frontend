@@ -73,33 +73,41 @@ const SearchPage = () => {
               </div>
               
               <div className='BookDescription'>
-                <div className='BookTitle'>
-                  {book.title}
-                  </div>
                 <img className='heart' src={heartGaryIcons} alt='Heart'></img>
                 
                 <div className='BookDetail'>
-                  <h6>저자</h6>
-                    {book.author}
-                  <h6>출판사</h6>
-                    {book.publisher}
-                  <h6>출판일</h6>
-                    {book.pubDate}
-                  <h6 style={{display:'inline'}}>포스트 | </h6>
-                    {/* `(${numPost})`개 */}
-                  <h6 style={{display:'inline'}}>한줄요약 | </h6>
-                    {/* `(${numOneLine})개` */}
-                </div>
-                <div className='BookIntro'>
-                  <h6>책 소개</h6>
-                    {book.description}
-                </div>
+                <div className='BookDetailContainer'>
+                  
+                <h1 className='BookTitle'>{book.title}</h1>
+                <p className='Author BookDetailInfo'>저자</p>
+                <p className='AuthorBookDetailData'>{book.author}</p>
+              </div>
 
-                <div className='oneLineContainer'>
+              <div className='BookDetailContainer'>
+                <p className='Pub BookDetailInfo'>출판사</p>
+                <p className='BookDetailData'>{book.publisher}</p>
+              </div>
+
+              <div className='BookDetailContainer'>
+                <p className='Pub BookDetailInfo'>출판일</p>
+                <p className='BookDetailData'>{book.pubDate}</p>
+              </div>
+              <p className='post BookDetailInfo'>포스트 | </p>
+              {/* <p className='BookDetailData'>{book.pubDate}</p> */}
+              <p className='post BookDetailInfo'> 한줄요약 | </p>
+              {/* <p className='BookDetailData'>{book.pubDate}</p> */}
+              </div>
+
+              <div className='BookIntro'>
+                <p>책 소개</p>
+                  <p>{book.description}</p>
+              </div>
+
+            </div>
+              {/* <div className='recommandReview'>
                   <h5> 대표 한줄평 </h5>
                   <h6> - 코코벤 기록가 </h6>
-                </div>
-              </div>
+                </div> */}
             </div>
             ))}
           <div>
