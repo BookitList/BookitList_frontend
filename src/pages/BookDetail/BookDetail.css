@@ -3,69 +3,84 @@
   width: 100%;
 }
 .BookDetailContent {
-  height: 70.2vh;
+  min-height: 606px;
   background: rgba(0, 0, 0, 0.8);
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 .BookDetailContent .Book {
   max-width: 42vh;
   max-height: 59.6vh;
-  margin: 5vh 3.2vh 5.6vh 40.5vh;
+  margin:0 49px 0 0;
   background-color: gray;
 }
+
+.BookDetail .BookImgContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .DetailBookImg {
   width: auto;
   height: 100%;
 }
 .detail {
-  height: 100%;
-  width: 65.6vh;
   display: flex;
   flex-direction: column;
   color: white;
 }
-.detail .bookName {
-  margin-top: 11.8vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.bookName div {
-  color: white;
-}
-.bookName .bookTitle {
-  margin-right: 37.27px;
-  margin-bottom: 10px;
-  font-size: 37.987px;
+
+.BookDetail .detail .bookTitle{
+  margin: 75.07px 0 0 0;
+  color: var(--naver-text, #FFF);
+  font-family: Pretendard;
+  font-size: 40px;
   font-style: normal;
   font-weight: 700;
+  /* line-height: 22.792px; 56.98% */
+  width: 658px;
 }
-.bookSubTitle {
-  font-size: 16.883px;
-  font-style: normal;
-  font-weight: 400;
-}
+
 .detail h3 h4 h5 h6 {
   color: white;
   margin: 10px;
 }
 
+.BookDetail .detailContent{
+  margin-top: 32.28px;
+}
+
 .detailContent h6 {
   color: white;
   margin: 10px;
+  color: var(--naver-text, #FFF);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22.792px; /* 162.8% */
+  letter-spacing: -0.28px;
 }
 
-.detail button {
-  width: 23.2vh;
-  height: 6.6vh;
+.detail .WritingButton {
+  width: 140px;
+  height: 50px;
   flex-shrink: 0;
-  border-radius: 2.5vh;
   background: #f1f1f1;
   color: black;
+  border-radius: 20px;
+  border: 1px solid #B8B8B8;
+  background: #F1F1F1;
+  color: #3C3C3C;
+  font-family: Pretendard;
   font-size: 20px;
-  font-weight: bold;
+  color: #3C3C3C;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 40px;
 }
 .reviewContainer {
   height: 823px;
@@ -90,4 +105,39 @@
 .postContainer h4 {
   margin-top: 54.18px;
   color: black;
+}
+
+.BookDetail .detailContent h6{
+  color: var(--naver-text, #FFF);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22.792px; /* 162.8% */
+  letter-spacing: -0.28px;
+  margin-top: 7.6px;
+  white-space: pre;
+}
+
+.BookDetail .bookIntroduction h6{
+  color: var(--naver-text, #FFF);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22.792px; /* 126.622% */
+  letter-spacing: -0.36px;
+  margin-top: 62.8px;
+}
+
+.bookIntroduction .BookDescription{
+  width: 658px;
+  color: var(--naver-text, #FFF);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%; /* 25.2px */
+  letter-spacing: -0.28px;
+
 }

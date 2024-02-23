@@ -86,25 +86,23 @@ const BookDetail= () => {
         <Header />
 
         <div className="BookDetailContent">
+          <div className='BookImgContainer'>
             <img src={bookInfo.cover} alt='Book Cover' className="Book">
               {/* <img src={bookInfo.cover} alt='Book Cover' className='DetailBookImg'/> */}
             </img>
+            </div>
             <div className="detail">
-                <div className="bookName">
-                    <div className="bookTitle">{bookInfo.title}</div>
-                    <div className="bookSubTitle">{bookInfo.subtitle}</div>
-                </div>
+                <p className="bookTitle">{bookInfo.title}</p>
                 <div className="detailContent">
-                    <h6>저자 : {bookInfo.author}</h6>
-                    <h6>발행: {bookInfo.publisher}</h6>
-                    <h6>발행일: {bookInfo.pubDate}</h6>
-                    <h6>판매가: {bookInfo.price}원</h6>
+                    <h6>저자     {bookInfo.author}</h6>
+                    <h6>출판사  {bookInfo.publisher}</h6>
+                    <h6>출판일  {bookInfo.pubDate}</h6>
                 </div>
                 <div className="bookIntroduction">
                   <h6>책 소개</h6>
-                  <p>{bookInfo.description}</p>
+                  <p className='BookDescription'>{bookInfo.description}</p>
                 </div>
-                <button onClick={gotowriting}>책 기록하기</button>
+                <button className='WritingButton' onClick={gotowriting}>책 기록하기</button>
             </div>
             
         </div>
