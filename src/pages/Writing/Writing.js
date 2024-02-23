@@ -265,10 +265,10 @@ const Writing = () => {
         {isPostWritingVisible && !isTemplateVisible && (
           <div className='PostWriting'>
             <div className='Template'>
-              <h1 className='TemplateText'>어떤 내용을 써야할 지 모르겠다면?</h1>
+              <p className='TemplateText'>어떤 내용을 써야할 지 모르겠다면?</p>
               <button className='TemplateButton' onClick={handleToggleTemplate}>
                 <img src={template} alt='templateIcon'/>
-                <h1 className='TemplateButtonText'>템플릿 불러오기</h1>
+                <p className='TemplateButtonText'>템플릿 불러오기</p>
               </button>
             </div>
             <div className='PostTitleContainer'>
@@ -295,10 +295,10 @@ const Writing = () => {
         {isPostWritingVisible && isTemplateVisible && (
           <div className="TemplatePostWriting">
             <div className='Template'>
-              <h1 className='TemplateText'>책을 자유롭게 기록하고 싶다면?</h1>
+              <p className='TemplateText'>책을 자유롭게 기록하고 싶다면?</p>
               <button className='TemplateButton' onClick={handleToggleTemplate}>
                 <img className='TempalteIcon' src={template} alt='templateIcon'/>
-                <h1 className='TemplateButtonText'>템플릿 제거하기</h1>
+                <p className='TemplateButtonText'>템플릿 제거하기</p>
               </button>
             </div>
             <div className='PostTitleContainer'>
