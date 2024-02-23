@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import axios from 'axios';
+// import axios from 'axios';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -22,7 +22,7 @@ import heartFill from 'img/heartFillIcon.svg'
 const Carousel = ({ customClass, componentName, data }) => {
 
   const navigate = useNavigate();
-  const [like, setLike] =useState(false);
+  const [isFilled, setIsFilled] = useState(false);
 
   const nameData = [
     {id: 1, name: '채다희', image: profileEX1},
@@ -35,7 +35,11 @@ const Carousel = ({ customClass, componentName, data }) => {
     {id: 8, name: '열매열', image: profileEX5},
     {id: 9, name: '코테이토', image: profileEX8}
   ]
-    
+   //좋아요 
+  const handleHeart=() => {
+    setIsFilled((prev) => !prev);
+  }
+
 
   // const handleCardClick = (bookId) => {
   //   navigate(`/WritingDetail/${bookId}`);
@@ -70,6 +74,7 @@ const Carousel = ({ customClass, componentName, data }) => {
   //   setLike(!like)
   // }
 
+
   return (
     <div className='Carousel'>
       <h1 className='componentName'>{componentName}</h1>
@@ -86,23 +91,32 @@ const Carousel = ({ customClass, componentName, data }) => {
         className={`Swiper ${customClass}`}
       >
         {data.map((item, index) => (
-          <SwiperSlide key={index} className='slidecss' onClick={() => handleCardClick(item.bookId, item.postId, item.reviewId, customClass)}>
+          <SwiperSlide key={index} className='slidecss' onClick={() => handleCardClick(item.bookId, item.postId, item.reviewId, customClass)} style={{position:'relative'}}>
           {nameData.map((author) => {
             if (author.id === item.memberId) {
               return(
-                <div key={author.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '-25px', marginLeft:'8px' }}>
+                <div key={author.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '-25px', marginLeft:'8px'}}>
                   <img src={author.image} alt='profileImg' style={{ width: '50px', height: '50px', marginRight: '5px' }} />
                   <p>작성자 : {author.name}</p>
 
                   {/* 좋아요 */}
-                  <img src={heartEmpty} alt='heartEmpty' style={{marginLeft:'160px'}} />
+                  
                 </div>
               );
             }
             return null;
           })}
-
-          
+          <div className='heart-container' onClick={handleHeart}>
+            <img
+            src={isFilled ? heartFill : heartEmpty}
+            alt='heartEmpty' className='heart-image' 
+            style={{position: 'absolute', top: 10, right: 15, cursor: 'pointer'}}
+            onClick={
+              // (e) => {
+              // e.stopPropagation();
+              handleHeart}
+              />
+          </div>
             
 
           <h3 style={{ marginBottom: '-5px', marginLeft:'8px' }}>{item.title}</h3>
