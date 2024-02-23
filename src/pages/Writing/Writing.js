@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Writing.css';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -12,6 +13,9 @@ import axios from 'axios';
 import NotBookRegistration from '../../img/notBookRegistration.svg';
 
 const Writing = () => {
+
+  const navigate = useNavigate();
+  
   const [textValue, setTextValue] = useState("");
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
@@ -98,6 +102,18 @@ const Writing = () => {
                   headers: headers
                 });
                 console.log('한줄 요약 등록 성공:', response.data);
+                alert("한줄 요약 등록 성공");
+
+               // 새로운 리뷰의 ID를 가져와서 URL 구성
+              // const newReviewId = response.data.reviewId;
+              // const newBookId = response.data.bookId;
+              // const newReviewUrl = `/WritingDetail/?reviewId=${newReviewId}&bookId=${newBookId}`;
+              // console.log('새로운 리뷰 URL:', newReviewUrl);
+
+              // // 리뷰 상세 페이지로 이동
+              // navigate(newReviewUrl);
+
+
               } catch (error) {
                 console.error('한줄 요약 등록에 실패:', error);
               }
@@ -150,9 +166,12 @@ const Writing = () => {
 
       
 
-  const handleSetValue = (e) => {
-    setTextValue(e.target.value);
-  };
+    const handleSetValue = (e) => {
+      const inputValue = e.target.value;
+      if (inputValue.length <= 50) {
+        setTextValue(inputValue);
+      }
+    };
 
   const handleSetTitle = (e, setContentFunction) => {
     setContentFunction(e.target.value);
@@ -178,12 +197,12 @@ const Writing = () => {
 
   const handleClearTitle = () => {
     setPostTitle('');
-    setPostContent('');
-    setTextValue('');
-    setPostContent1('');
-    setPostContent2('');
-    setPostContent3('');
-    setPostContent4('');
+    // setPostContent('');
+    // setTextValue('');
+    // setPostContent1('');
+    // setPostContent2('');
+    // setPostContent3('');
+    // setPostContent4('');
   };
 
   const handleBookClick = (book) => {
@@ -197,7 +216,7 @@ const Writing = () => {
   };
 
   const Registration = () => {
-    handleClearTitle(); 
+    // handleClearTitle(); 
     handleRegistration(); 
   };
 
@@ -255,20 +274,23 @@ const Writing = () => {
           <img className='NotBookRegistration' src={NotBookRegistration} alt='NotBookRegistration'/>
         )}
         {selectedBook && isOneLineWritingVisible && (
-          <textarea
-            className='OneLineTextArea'
-            value={textValue}
-            onChange={(e) => handleSetValue(e)}
-            placeholder="내용을 입력하세요"
-          ></textarea>
+          <div>
+            <textarea
+              className='OneLineTextArea'
+              value={textValue}
+              onChange={(e) => handleSetValue(e)}
+              placeholder="내용을 입력하세요"
+            ></textarea>
+            <p className='ReviewCount'>{textValue.length}/50</p>
+          </div>
         )}
         {isPostWritingVisible && !isTemplateVisible && (
           <div className='PostWriting'>
             <div className='Template'>
-              <h1 className='TemplateText'>어떤 내용을 써야할 지 모르겠다면?</h1>
+              <p className='TemplateText'>어떤 내용을 써야할 지 모르겠다면?</p>
               <button className='TemplateButton' onClick={handleToggleTemplate}>
                 <img src={template} alt='templateIcon'/>
-                <h1 className='TemplateButtonText'>템플릿 불러오기</h1>
+                <p className='TemplateButtonText'>템플릿 불러오기</p>
               </button>
             </div>
             <div className='PostTitleContainer'>
@@ -295,10 +317,10 @@ const Writing = () => {
         {isPostWritingVisible && isTemplateVisible && (
           <div className="TemplatePostWriting">
             <div className='Template'>
-              <h1 className='TemplateText'>책을 자유롭게 기록하고 싶다면?</h1>
+              <p className='TemplateText'>책을 자유롭게 기록하고 싶다면?</p>
               <button className='TemplateButton' onClick={handleToggleTemplate}>
                 <img className='TempalteIcon' src={template} alt='templateIcon'/>
-                <h1 className='TemplateButtonText'>템플릿 제거하기</h1>
+                <p className='TemplateButtonText'>템플릿 제거하기</p>
               </button>
             </div>
             <div className='PostTitleContainer'>
