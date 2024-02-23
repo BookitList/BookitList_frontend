@@ -14,6 +14,7 @@
 .SearchPage .BookContainer {
   width: 1092px;
   height: 350px;
+  margin-bottom: 50px;
   position: relative;
   border-radius: 10px;
   background: var(--naver-text, #fff);
@@ -21,7 +22,7 @@
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .SearchPage .BookImg {
@@ -29,10 +30,10 @@
   width: 180px;
   height: 272px;
   position: absolute;
-  /* top: -10px;
-  bottom: auto;
+  top: 30px;
+  bottom: 30px;
   left: auto;
-  right: 870px; */
+  right: 870px;
 }
 
 .BookDescription {
@@ -42,6 +43,11 @@
   width: 100%;
   margin: 50px;
   margin-left: 250px;
+  margin-top: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .heart {
@@ -50,25 +56,42 @@
   top: 0;
 }
 
+.BookTitle {
+  color: black;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.BookDetail {
+  margin-top: 5px;
+  text-align: start;
+}
 .BookDetail h6 {
   color: black;
-  margin: 0 auto;
+  margin-top: 3px;
 }
-
-.BookIntro h6 {
-  position: absolute;
-  right: 50%;
-  top: 100px;
+.BookDetail p {
   color: black;
+  margin-top: 3px;
+  display: inline-block;
 }
 
-button {
+.BookIntro {
+  position: absolute;
+  left: 40%;
+  /* top: 1px; */
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+/* button {
   background-color: rgb(88, 61, 188);
-  color: white;
+  color: black;
   border: none;
   padding: 5px;
   border-radius: 10px;
-}
+} */
 
 button:disabled {
   background-color: gray;
