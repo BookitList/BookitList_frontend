@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Writing.css';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -12,6 +13,9 @@ import axios from 'axios';
 import NotBookRegistration from '../../img/notBookRegistration.svg';
 
 const Writing = () => {
+
+  const navigate = useNavigate();
+  
   const [textValue, setTextValue] = useState("");
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
@@ -98,6 +102,18 @@ const Writing = () => {
                   headers: headers
                 });
                 console.log('한줄 요약 등록 성공:', response.data);
+                alert("한줄 요약 등록 성공");
+
+               // 새로운 리뷰의 ID를 가져와서 URL 구성
+              // const newReviewId = response.data.reviewId;
+              // const newBookId = response.data.bookId;
+              // const newReviewUrl = `/WritingDetail/?reviewId=${newReviewId}&bookId=${newBookId}`;
+              // console.log('새로운 리뷰 URL:', newReviewUrl);
+
+              // // 리뷰 상세 페이지로 이동
+              // navigate(newReviewUrl);
+
+
               } catch (error) {
                 console.error('한줄 요약 등록에 실패:', error);
               }
@@ -181,12 +197,12 @@ const Writing = () => {
 
   const handleClearTitle = () => {
     setPostTitle('');
-    setPostContent('');
-    setTextValue('');
-    setPostContent1('');
-    setPostContent2('');
-    setPostContent3('');
-    setPostContent4('');
+    // setPostContent('');
+    // setTextValue('');
+    // setPostContent1('');
+    // setPostContent2('');
+    // setPostContent3('');
+    // setPostContent4('');
   };
 
   const handleBookClick = (book) => {
@@ -200,7 +216,7 @@ const Writing = () => {
   };
 
   const Registration = () => {
-    handleClearTitle(); 
+    // handleClearTitle(); 
     handleRegistration(); 
   };
 
@@ -258,15 +274,15 @@ const Writing = () => {
           <img className='NotBookRegistration' src={NotBookRegistration} alt='NotBookRegistration'/>
         )}
         {selectedBook && isOneLineWritingVisible && (
-           <div>
-           <textarea
-             className='OneLineTextArea'
-             value={textValue}
-             onChange={(e) => handleSetValue(e)}
-             placeholder="내용을 입력하세요"
-           ></textarea>
-           <p className='ReviewCount'>{textValue.length}/50</p>
-         </div>
+          <div>
+            <textarea
+              className='OneLineTextArea'
+              value={textValue}
+              onChange={(e) => handleSetValue(e)}
+              placeholder="내용을 입력하세요"
+            ></textarea>
+            <p className='ReviewCount'>{textValue.length}/50</p>
+          </div>
         )}
         {isPostWritingVisible && !isTemplateVisible && (
           <div className='PostWriting'>

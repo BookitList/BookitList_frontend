@@ -157,7 +157,7 @@
     height: 540px;
 }
 
-.Writing .OneLineTextArea, .Writing .PostContent, .Writing .TemplatePost, .Writing .TemplatePostEtc{
+ .OneLineTextArea, .Writing .PostContent, .Writing .TemplatePost, .Writing .TemplatePostEtc{
   resize: none;
   border-radius: 30px;
   background: #F8F8F8;
@@ -169,7 +169,7 @@
   padding: 40px 40px 40px 50px;
   width: 100%;
   box-sizing: border-box;
-  border: 2px solid none;
+  border: 2px solid transparent; 
   outline-color: #9C93FF;
 }
 
