@@ -150,9 +150,12 @@ const Writing = () => {
 
       
 
-  const handleSetValue = (e) => {
-    setTextValue(e.target.value);
-  };
+    const handleSetValue = (e) => {
+      const inputValue = e.target.value;
+      if (inputValue.length <= 50) {
+        setTextValue(inputValue);
+      }
+    };
 
   const handleSetTitle = (e, setContentFunction) => {
     setContentFunction(e.target.value);
@@ -255,12 +258,15 @@ const Writing = () => {
           <img className='NotBookRegistration' src={NotBookRegistration} alt='NotBookRegistration'/>
         )}
         {selectedBook && isOneLineWritingVisible && (
-          <textarea
-            className='OneLineTextArea'
-            value={textValue}
-            onChange={(e) => handleSetValue(e)}
-            placeholder="내용을 입력하세요"
-          ></textarea>
+           <div>
+           <textarea
+             className='OneLineTextArea'
+             value={textValue}
+             onChange={(e) => handleSetValue(e)}
+             placeholder="내용을 입력하세요"
+           ></textarea>
+           <p className='ReviewCount'>{textValue.length}/50</p>
+         </div>
         )}
         {isPostWritingVisible && !isTemplateVisible && (
           <div className='PostWriting'>
