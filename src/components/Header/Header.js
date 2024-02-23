@@ -47,7 +47,6 @@ const handleLogoutButtonClick= async () => {
         setAccessToken(null);
         setRefreshToken(null);
         console.log('서버에 로그아웃 요청 전송 성공');
-        window.location.href();
 
     } catch (error){
         console.log(error);
@@ -95,8 +94,8 @@ return (
 
         <div className='HeaderLeft'>
             <div className='LeftItem'>
-                <a href='/' style={{marginRight:'30px'}}>
-                    <img src={Logo} alt='Logo' />
+                <a href='/' >
+                    <img src={Logo} alt='Logo' style={{marginRight:'20px'}}/>
                 </a>
             </div>
             <div className='LeftItem'>

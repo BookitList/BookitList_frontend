@@ -7,21 +7,33 @@ import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './Carousel.css';
+import profileEX1 from 'img/profileEX.svg';
+import profileEX2 from 'img/profileEX2.svg';
+import profileEX3 from 'img/profileEX3.svg';
+import profileEX4 from 'img/profileEX4.svg';
+import profileEX5 from 'img/profileEX5.svg';
+import profileEX6 from 'img/profileEX6.svg';
+import profileEX7 from 'img/profileEX7.svg';
+import profileEX8 from 'img/profileEX8.svg';
+import profileEX9 from 'img/profileEX9.svg';
+import heartEmpty from 'img/heartGrayIcon.svg'
+import heartFill from 'img/heartFillIcon.svg'
 
 const Carousel = ({ customClass, componentName, data }) => {
 
   const navigate = useNavigate();
+  const [like, setLike] =useState(false);
 
   const nameData = [
-    {id: 1, name: '채다희'},
-    {id: 2, name: '장우석'},
-    {id: 3, name: '박소현'},
-    {id: 4, name: '허석문'},
-    {id: 5, name: '김나연'},
-    {id: 6, name: 'morenow'},
-    {id: 7, name: '김수윤'},
-    {id: 8, name: '열매열'},
-    {id: 9, name: '코테이토'}
+    {id: 1, name: '채다희', image: profileEX1},
+    {id: 2, name: '장우석', image: profileEX4},
+    {id: 3, name: '박소현', image: profileEX3},
+    {id: 4, name: '허석문', image: profileEX7},
+    {id: 5, name: '김나연', image: profileEX6},
+    {id: 6, name: 'morenow', image: profileEX2},
+    {id: 7, name: '김수윤', image: profileEX9},
+    {id: 8, name: '열매열', image: profileEX5},
+    {id: 9, name: '코테이토', image: profileEX8}
   ]
     
 
@@ -44,10 +56,25 @@ const Carousel = ({ customClass, componentName, data }) => {
     }
   };
 
+  //좋아요
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get('https://api.bookitlist.store/reviews/{review-id}/likes');
+  //     if (res.data.type === 'liked') setLike(true)
+  //   }
+  //   fetchData()
+  // }, []);
+  
+  // const toggleLike = async (e) => {
+  //   const res = await axios.post(...) // [POST] 사용자가 좋아요를 누름 -> DB 갱신
+  //   setLike(!like)
+  // }
+
   return (
     <div className='Carousel'>
       <h1 className='componentName'>{componentName}</h1>
       <Swiper
+        loop={true}
         slidesPerView={3}
         centeredSlides={false}
         spaceBetween={24}
@@ -59,20 +86,31 @@ const Carousel = ({ customClass, componentName, data }) => {
         className={`Swiper ${customClass}`}
       >
         {data.map((item, index) => (
-          // onClick={()=>navigate(`/글상세/${item.글ID}`)}
           <SwiperSlide key={index} className='slidecss' onClick={() => handleCardClick(item.bookId, item.postId, item.reviewId, customClass)}>
           {nameData.map((author) => {
             if (author.id === item.memberId) {
-              return <p key={author.id} style={{ marginBottom: '-10px' }}>작성자 : {author.name}</p>;
+              return(
+                <div key={author.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '-25px', marginLeft:'8px' }}>
+                  <img src={author.image} alt='profileImg' style={{ width: '50px', height: '50px', marginRight: '5px' }} />
+                  <p>작성자 : {author.name}</p>
+
+                  {/* 좋아요 */}
+                  <img src={heartEmpty} alt='heartEmpty' style={{marginLeft:'160px'}} />
+                </div>
+              );
             }
             return null;
           })}
-          <h3 style={{ marginBottom: '-5px' }}>{item.title}</h3>
+
+          
+            
+
+          <h3 style={{ marginBottom: '-5px', marginLeft:'8px' }}>{item.title}</h3>
 
           {Array.isArray(item.content) ? (
             <>
               {item.content.map((content, i) => (
-                <div key={i} style={{ marginBottom: '-30px' }}>
+                <div key={i} style={{ marginBottom: '-30px', marginLeft:'8px' }}>
                   <p>
                     {content.length >= 150 ? `${content.slice(0, 150)}...` : content}
                   </p>
@@ -81,7 +119,7 @@ const Carousel = ({ customClass, componentName, data }) => {
               ))}
             </>
           ) : (
-            <div style={{ marginBottom: '-30px' }}>
+            <div style={{ marginBottom: '-30px', marginLeft:'8px' }}>
               <p>
                 {item.content.length >= 150 ? `${item.content.slice(0, 150)}...` : item.content}
               </p>
