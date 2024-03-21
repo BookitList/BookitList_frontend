@@ -33,7 +33,7 @@ React
 * AWS
 * 알라딘 API
 * Routes, Redux
-* * styled-components prettier
+* styled-components prettier
 
 <h2> 📚 기능 소개 </h2>
 
