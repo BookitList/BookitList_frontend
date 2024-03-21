@@ -42,3 +42,28 @@ React
 <h3>ERD</h3>
 <img src="https://i.esdrop.com/d/f/YTUE3QvCe9/qyj8p3iqmO.png" style="width: 75%;" />
 
+<h2> 🪄 UI 페이지 </h2>
+
+<h3>Login Page</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/k7YLDpoVz5.png" style="width: 75%;" />
+
+<h3>Main Page</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/z0xuHSdtwQ.png" style="width: 75%;" />
+
+<h3>Writing Page</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/WdnHV4JObI.png" style="width: 75%;" />
+
+<h3>Writing Page - post</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/tyRZOhm8Jd.png" style="width: 75%;" />
+
+<h3>Writing Page - templete</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/HfvMx7hjkt.png" style="width: 75%;" />
+
+<h3>Detail Page</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/NaDvuOWyY0.png" style="width: 75%;" />
+
+<h3>My Page</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/64ge8IRaQU.png" style="width: 75%;" />
+
+<h3>My Page</h3>
+<img src="https://i.esdrop.com/d/f/ceLRuv0YKE/hY1IEvMWzk.png" style="width: 75%;" />
